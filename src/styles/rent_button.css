@@ -1,26 +1,27 @@
 .icon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
-    background-color: #ffeb3b; /* Similar to the yellow circle */
-    border-radius: 50%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  }
-  .card-title {
-    font-weight: bold;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background-color: #e66013; /* Similar to the yellow circle */
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  color: white;
   
-  /* rent_button.css */
+}
+.card-title {
+  font-weight: bold;
+}
+
+/* rent_button.css */
 .hover-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .hover-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 1); /* Increased shadow intensity */
-  cursor: pointer;
-  }
-  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 1); /* Increased shadow intensity */
+cursor: pointer;
+}

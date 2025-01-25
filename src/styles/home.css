@@ -1,3 +1,44 @@
+/* Hero Section */
+.hero-content {
+  position: absolute;
+  top: 40%; /* Adjust this value to move the content up or down */
+  left: 25%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgb(15, 12, 61);
+  z-index: 2;
+  width: 100%; /* Ensure it takes full width */
+}
+
+.hero-content h1 {
+  font-size: 5rem;
+  margin-bottom: 10px;
+  font-weight: bold; /* Add if the text is bold in the image */
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.5; /* Adjust line height for better spacing */
+  font-weight: bold;
+}
+
+.explore-button {
+  background-color: #d85c14;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 20px 30px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Add margin to separate button from text */
+}
+
+.explore-button:hover {
+  background-color: #ec530c;
+}
 /* Navbar Styling */
 .navbar {
   z-index: 10;
@@ -13,7 +54,7 @@
 }
 
 .navbar a:hover {
-  color: #ffd700; /* Yellow color on hover */
+  color: #ff5e00; /* Yellow color on hover */
 }
 
 .navbar .nav-link.active {
@@ -28,7 +69,7 @@
 }
 
 .navbar .btn-outline-dark:hover {
-  background-color: #333; /* Dark hover background */
+  background-color: #ff5e00; /* Dark hover background */
   color: #fff; /* White text */
 }
 
@@ -40,7 +81,7 @@
 .navbar .dropdown-menu {
   border-radius: 10px;
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(221, 75, 8, 0.1);
   font-size: 0.9rem;
 }
 
@@ -51,10 +92,10 @@
 /* Background Image Section */
 .background-image {
   position: relative;
-  background-image: url("https://media.istockphoto.com/id/2165850543/photo/close-up-of-female-legs-in-hiking-boots-walks-on-ground-with-yellow-orange-dry-fall-leaves.jpg?s=2048x2048&w=is&k=20&c=u0IKbfsmzrXqET3AKMtkIRLIYIq_u5CMZZP7o-WYRfI=");
+  background-image: url("/src/assets/images/home.jpg");
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 770px;
 }
 
 .background-image .overlay {
@@ -63,14 +104,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
+  /*background: rgba(212, 211, 211, 0.5); /* Slightly darker overlay */
   z-index: 1;
 }
-/* Filter Bar Styling */
+
+/* Filter Box Section */
 .filter-box-wrapper {
-  margin-top: -30px; /* Moves the box under the background image */
+  margin-top: -30px; /* Moves the box under the image */
   z-index: 2;
   position: relative;
+  transition: all 0.3s ease; /* Smooth resizing for toggle effect */
 }
 
 .filter-box {
@@ -78,9 +121,13 @@
   padding: 15px 20px;
   background-color: #fff;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap; /* Adjust layout for smaller screens */
   gap: 10px; /* Adds spacing between items */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for the main filter box */
+  transition: padding 0.3s ease; /* Smooth transition when expanded */
+}
+
+.filter-box.expanded {
+  padding: 20px 25px;
 }
 
 .filter-item {
@@ -91,7 +138,7 @@
 .filter-box select {
   font-size: 0.9rem;
   font-weight: 500;
-  border: 1px solid #ccc;
+  border: 1px solid #d64215;
   border-radius: 5px;
   padding: 5px 10px;
   transition: border-color 0.3s ease;
@@ -102,7 +149,7 @@
 }
 
 .filter-box button {
-  background-color: #ffd700; /* Yellow background for the search button */
+  background-color: #ff853f; /* Match search button's yellow color */
   border: none;
   font-size: 1rem;
   font-weight: bold;
@@ -112,7 +159,7 @@
 }
 
 .filter-box button:hover {
-  background-color: #e6b800; /* Darker yellow on hover */
+  background-color: #ec530c; /* Darker yellow on hover */
   transform: scale(1.05); /* Slightly enlarges button on hover */
 }
 
@@ -123,43 +170,17 @@
 }
 
 .filter-box i:hover {
-  color: #ffd700; /* Yellow icon on hover */
+  color: #ff6600; /* Yellow icon on hover */
 }
 
-/* Advanced Filters Box Styling */
-.advanced-filters-box {
+/* Advanced Filters Section */
+.advanced-filters-section {
+  background-color: #f8f9fa;
   border-radius: 10px;
-  padding: 15px 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for the advanced filters box */
-  margin-top: 15px; /* Adds spacing between the main filter box and advanced filters box */
+  padding: 15px;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(240, 100, 6, 0.1);
 }
-
-.advanced-filters .row {
-  margin-bottom: 15px; /* Adds spacing between rows */
-}
-
-.advanced-filters .filter-item {
-  margin-bottom: 10px; /* Adds spacing between filter items */
-}
-
-.advanced-filters label {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #333;
-}
-
-.advanced-filters .form-range {
-  width: 100%;
-}
-
-.advanced-filters .form-control {
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-}
-
-
 
 /* Responsive Design */
 @media (max-width: 768px) {

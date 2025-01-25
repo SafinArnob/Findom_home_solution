@@ -1,15 +1,12 @@
 import { useState } from "react";
 import "../styles/Home.css";
 import '../styles/rent_button.css';
-import '../styles/PropertySlider.css';
 import FilterBar from './../components/FilterBar';
 import AdvancedFilters from "../components/AdvancedFilters";
-import Navbar from "../components/navbar";  // Import the Navbar component
+import Navbar from "../components/Navbar";  // Import the Navbar component
 import Rent from './Rent';
 import FooterPage from './FooterPage';
 import PropertySlider from "./Property";
-
-
 
 function Home() {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
@@ -23,11 +20,15 @@ function Home() {
       {/* Navbar */}
       <Navbar />
 
-      {/* Background Section */}
+      {/* Background Section with Text and Button */}
       <section className="background-image position-relative">
-        <div className="overlay"></div>
-      </section>
-
+  <div className="overlay"></div>
+  <div className="hero-content">
+    <h1>Find a Home<br></br> You will Love</h1>
+    <p>Discover a Place You ll Love to Live</p>
+    <button className="explore-button">Explore Houses</button>
+  </div>
+</section>
       {/* Filter Box Section */}
       <section className="filter-box-wrapper position-relative py-4">
         <div className="container">
@@ -48,9 +49,8 @@ function Home() {
           <Rent /> {/* Render the Rent component here */}
         </section>
 
-        {/* Property */}
-        <PropertySlider />
-
+         {/* Property */}
+         <PropertySlider />
         {/* Footer page */}
         <FooterPage />
       </section>
