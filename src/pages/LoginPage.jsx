@@ -1,99 +1,258 @@
+import { useState } from 'react';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'; // Import Swiper styles
-import 'swiper/css/navigation'; // Import navigation styles
-import { Navigation } from 'swiper/modules'; // Import navigation module
-import PropertyCard from './../components/PropertyCard';
+const LoginSignup = () => {
+  const [isSignUp, setIsSignUp] = useState(false);
 
+  const toggleForm = () => {
+    setIsSignUp(!isSignUp);
+  };
 
-const PropertySlider = () => {
-  const properties = [
-    {
-      id: 1,
-      title: 'Store in Woodside, New York',
-      price: '$1,250,000',
-      location: 'Woodside, New York',
-      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
-    },
-    {
-      id: 2,
-      title: 'Hermosa casa al norte',
-      price: '$1,250,000',
-      location: 'North Region',
-      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
-    },
-    {
-      id: 3,
-      title: 'Casa Lomas de Machali',
-      price: '$1,250,000',
-      location: 'Machali, Chile',
-      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
-    },
-    {
-      id: 4,
-      title: 'Luxury Apartment in Manhattan',
-      price: '$2,500,000',
-      location: 'Manhattan, New York',
-      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
-    },
-    {
-      id: 5,
-      title: 'Beach House in Malibu',
-      price: '$3,000,000',
-      location: 'Malibu, California',
-      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
-    },
-  ];
+  const signInImage = "/assets/images/signin.jpg"; // Default Sign In image source
+  const signUpImage = "/assets/images/signup.jpg"; // Default Sign Up image source
 
   return (
-    <div className="property-slider-container">
-      {/* Heading and Slider Container */}
-      <div className="flex items-center gap-8">
-        {/* Heading on the Left */}
-        <h1 className="text-3xl font-bold">Properties for Sale</h1>
+    <div
+      className="d-flex vh-100 position-relative"
+      style={{
+        backgroundColor: '#FFF7E6',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Curved Shade for Sign Up with Image */}
+      {isSignUp && (
+        <div
+          className="position-absolute"
+          style={{
+            width: '50%',
+            height: '100%',
+            backgroundColor: '#FF7A00',
+            borderTopLeftRadius: '100% 50%',
+            borderBottomLeftRadius: '100% 50%',
+            top: 0,
+            right: 0,
+            zIndex: 1,
+            overflow: 'hidden',
+          }}
+        >
+          <img
+            src={signUpImage}
+            alt="Sign Up"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '120%',
+              height: 'auto',
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+      )}
 
-        {/* Swiper Slider */}
-        <div className="flex-grow">
-          <Swiper
-            modules={[Navigation]} // Enable navigation (arrows)
-            navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
+      {/* Curved Shade for Sign In with Image */}
+      {!isSignUp && (
+        <div
+          className="position-absolute"
+          style={{
+            width: '50%',
+            height: '100%',
+            backgroundColor: '#FF7A00',
+            borderTopRightRadius: '100% 50%',
+            borderBottomRightRadius: '100% 50%',
+            top: 0,
+            left: 0,
+            zIndex: 1,
+            overflow: 'hidden',
+          }}
+        >
+          <img
+            src={signInImage}
+            alt="Sign In"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '120%',
+              height: 'auto',
+              objectFit: 'cover',
             }}
-            spaceBetween={20} // Space between slides
-            slidesPerView={3} // Number of slides visible at once
-            breakpoints={{
-              320: {
-                slidesPerView: 1, // 1 slide on small screens
-              },
-              768: {
-                slidesPerView: 2, // 2 slides on medium screens
-              },
-              1024: {
-                slidesPerView: 3, // 3 slides on large screens
-              },
-            }}
+          />
+        </div>
+      )}
+
+      <div
+        className="d-flex justify-content-center align-items-center flex-grow-1"
+        style={{
+          zIndex: 2,
+        }}
+      >
+        <div className="text-center text-dark">
+          <h1>{isSignUp ? 'New here?' : 'Welcome Back!'}</h1>
+          <p>{isSignUp ? 'Create an account and get started' : 'Sign in to continue your journey'}</p>
+          <button
+            className="btn btn-outline-dark mt-4"
+            style={{ borderRadius: '30px', fontWeight: 'bold' }}
+            onClick={toggleForm}
           >
-            {properties.map((property) => (
-              <SwiperSlide key={property.id}>
-                <PropertyCard property={property} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            {isSignUp ? 'Sign In' : 'Sign Up'}
+          </button>
         </div>
       </div>
 
-      {/* Navigation Arrows (Positioned Below the Slider) */}
-      <div className="flex justify-center gap-4 mt-6">
-        <div className="swiper-button-prev bg-white shadow rounded-full w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
-          &larr;
-        </div>
-        <div className="swiper-button-next bg-white shadow rounded-full w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
-          &rarr;
+      <div
+        className="d-flex justify-content-center align-items-center flex-grow-1"
+        style={{
+          position: 'relative',
+          zIndex: 2,
+        }}
+      >
+        <div
+          className="card shadow p-5"
+          style={{
+            width: '400px',
+            borderRadius: '20px',
+            border: 'none',
+            backgroundColor: '#FFE8CC',
+          }}
+        >
+          <h2
+            className="text-center mb-4"
+            style={{
+              color: '#FF7A00',
+              fontWeight: 'bold',
+            }}
+          >
+            {isSignUp ? 'Sign Up' : 'Sign In'}
+          </h2>
+          <p className="text-center text-muted mb-4">
+            {isSignUp ? 'Fill in your details to create an account' : 'Enter your credentials to access your account'}
+          </p>
+          {isSignUp && (
+            <>
+              <div className="mb-4">
+                <label htmlFor="name" className="form-label">
+                  <strong>Name:</strong>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  style={{ borderColor: '#FFB85C' }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="phone" className="form-label">
+                  <strong>Phone Number:</strong>
+                </label>
+                <input
+                  type="tel"
+                  className="form-control"
+                  id="phone"
+                  placeholder="+1234567890"
+                  style={{ borderColor: '#FFB85C' }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="email" className="form-label">
+                  <strong>Email:</strong>
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder="example@mail.com"
+                  style={{ borderColor: '#FFB85C' }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="password" className="form-label">
+                  <strong>Password:</strong>
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  placeholder="Password"
+                  style={{ borderColor: '#FFB85C' }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="rePassword" className="form-label">
+                  <strong>Re-check Password:</strong>
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="rePassword"
+                  placeholder="Re-enter Password"
+                  style={{ borderColor: '#FFB85C' }}
+                />
+              </div>
+            </>
+          )}
+          {!isSignUp && (
+            <>
+              <div className="mb-4">
+                <label htmlFor="phone" className="form-label">
+                  <strong>Phone Number:</strong>
+                </label>
+                <input
+                  type="tel"
+                  className="form-control"
+                  id="phone"
+                  placeholder="+1234567890"
+                  style={{ borderColor: '#FFB85C' }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="password" className="form-label">
+                  <strong>Password:</strong>
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  placeholder="Password"
+                  style={{ borderColor: '#FFB85C' }}
+                />
+              </div>
+            </>
+          )}
+          <button
+            className="btn w-100 mb-4"
+            style={{
+              backgroundColor: '#FF7A00',
+              color: 'white',
+              fontWeight: 'bold',
+              borderRadius: '10px',
+            }}
+          >
+            {isSignUp ? 'Sign Up' : 'Login'}
+          </button>
+          {!isSignUp && (
+            <small className="text-muted">
+              <a href="#forgot-password" style={{ color: '#FF7A00' }}>
+                Forgot password?
+              </a>
+            </small>
+          )}
+          <p className="text-center mt-4">
+            {isSignUp ? 'Already have an account?' : "Don’t have an account?"}{' '}
+            <a
+              href="#toggle"
+              onClick={toggleForm}
+              style={{ color: '#FF7A00', fontWeight: 'bold' }}
+            >
+              {isSignUp ? 'Sign In' : 'Sign Up'}
+            </a>
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default PropertySlider;
+export default LoginSignup;
