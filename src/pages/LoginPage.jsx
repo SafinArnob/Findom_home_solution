@@ -1,79 +1,99 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // Import Swiper styles
+import 'swiper/css/navigation'; // Import navigation styles
+import { Navigation } from 'swiper/modules'; // Import navigation module
+import PropertyCard from './../components/PropertyCard';
 
 
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  // Function to handle navigation to the Register page
-  const handleRegisterClick = () => {
-    navigate('/register'); // Navigate to the Register page
-  };
+const PropertySlider = () => {
+  const properties = [
+    {
+      id: 1,
+      title: 'Store in Woodside, New York',
+      price: '$1,250,000',
+      location: 'Woodside, New York',
+      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
+    },
+    {
+      id: 2,
+      title: 'Hermosa casa al norte',
+      price: '$1,250,000',
+      location: 'North Region',
+      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
+    },
+    {
+      id: 3,
+      title: 'Casa Lomas de Machali',
+      price: '$1,250,000',
+      location: 'Machali, Chile',
+      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
+    },
+    {
+      id: 4,
+      title: 'Luxury Apartment in Manhattan',
+      price: '$2,500,000',
+      location: 'Manhattan, New York',
+      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
+    },
+    {
+      id: 5,
+      title: 'Beach House in Malibu',
+      price: '$3,000,000',
+      location: 'Malibu, California',
+      image: 'https://via.placeholder.com/400x300', // Replace with your image URL
+    },
+  ];
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-      <div className="card shadow p-4" style={{ width: '400px' }}>
-        <h2 className="text-center mb-4">Login</h2>
+    <div className="property-slider-container">
+      {/* Heading and Slider Container */}
+      <div className="flex items-center gap-8">
+        {/* Heading on the Left */}
+        <h1 className="text-3xl font-bold">Properties for Sale</h1>
 
-        {/* Phone Number Input */}
-        <div className="mb-3">
-          <label htmlFor="phoneNumber" className="form-label">
-            <strong>Phone Number :</strong>
-          </label>
-          <div className="input-group">
-            <span className="input-group-text">+880</span>
-            <input
-              type="text"
-              className="form-control"
-              id="phoneNumber"
-              placeholder="1812-345678"
-            />
-          </div>
+        {/* Swiper Slider */}
+        <div className="flex-grow">
+          <Swiper
+            modules={[Navigation]} // Enable navigation (arrows)
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            spaceBetween={20} // Space between slides
+            slidesPerView={3} // Number of slides visible at once
+            breakpoints={{
+              320: {
+                slidesPerView: 1, // 1 slide on small screens
+              },
+              768: {
+                slidesPerView: 2, // 2 slides on medium screens
+              },
+              1024: {
+                slidesPerView: 3, // 3 slides on large screens
+              },
+            }}
+          >
+            {properties.map((property) => (
+              <SwiperSlide key={property.id}>
+                <PropertyCard property={property} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
+      </div>
 
-        {/* Password Input */}
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            <strong>Password :</strong>
-          </label>
-          <div className="input-group">
-            <input
-              type={showPassword ? 'text' : 'password'} // Toggle password visibility
-              className="form-control"
-              id="password"
-              placeholder="Password"
-            />
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
-          </div>
-          <small className="text-muted">
-            <a href="#forgot-password">I forgot password</a>
-          </small>
+      {/* Navigation Arrows (Positioned Below the Slider) */}
+      <div className="flex justify-center gap-4 mt-6">
+        <div className="swiper-button-prev bg-white shadow rounded-full w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+          &larr;
         </div>
-
-        {/* Login Button */}
-        <button className="btn btn-primary w-100 mb-3">Login</button>
-
-        {/* Register Link */}
-        <p className="text-center">
-          Do not have an account?{' '}
-          <a href="#register" onClick={handleRegisterClick}>
-            Register
-          </a>
-        </p>
+        <div className="swiper-button-next bg-white shadow rounded-full w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+          &rarr;
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default PropertySlider;

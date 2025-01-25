@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "../styles/Home.css";
 import '../styles/rent_button.css';
+import '../styles/PropertySlider.css';
 import FilterBar from './../components/FilterBar';
 import AdvancedFilters from "../components/AdvancedFilters";
 import Navbar from "../components/navbar";  // Import the Navbar component
 import Rent from './Rent';
 import FooterPage from './FooterPage';
+import PropertySlider from "./Property";
 
 
 
@@ -45,6 +47,9 @@ function Home() {
         <section className="rent-sell-section">
           <Rent /> {/* Render the Rent component here */}
         </section>
+
+        {/* Property */}
+        <PropertySlider />
 
         {/* Footer page */}
         <FooterPage />
