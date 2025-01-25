@@ -57,8 +57,8 @@ const AdvancedFilters = () => {
           </select>
         </div>
         <div className="col-md-6 filter-item">
-          <label>Price Range: from $200 to $2,500,000</label>
-          <input type="range" className="form-range" min="200" max="2500000" />
+          <label>Other Features</label>
+          <input type="text" className="form-control" placeholder="Enter features" />
         </div>
       </div>
 
@@ -69,8 +69,8 @@ const AdvancedFilters = () => {
           <input type="range" className="form-range" min="10" max="1000" />
         </div>
         <div className="col-md-6 filter-item">
-          <label>Other Features</label>
-          <input type="text" className="form-control" placeholder="Enter features" />
+          <label>Price Range: from $200 to $2,500,000</label>
+          <input type="range" className="form-range" min="200" max="2500000" />
         </div>
       </div>
     </div>
