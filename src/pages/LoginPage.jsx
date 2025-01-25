@@ -7,9 +7,6 @@ const LoginSignup = () => {
     setIsSignUp(!isSignUp);
   };
 
-  const signInImage = "/assets/images/signin.jpg"; // Default Sign In image source
-  const signUpImage = "/assets/images/signup.jpg"; // Default Sign Up image source
-
   return (
     <div
       className="d-flex vh-100 position-relative"
@@ -35,7 +32,7 @@ const LoginSignup = () => {
           }}
         >
           <img
-            src={signUpImage}
+            src="/path-to-your-image.jpg"
             alt="Sign Up"
             style={{
               position: 'absolute',
@@ -67,7 +64,7 @@ const LoginSignup = () => {
           }}
         >
           <img
-            src={signInImage}
+            src="/path-to-your-image.jpg"
             alt="Sign In"
             style={{
               position: 'absolute',
@@ -232,13 +229,6 @@ const LoginSignup = () => {
           >
             {isSignUp ? 'Sign Up' : 'Login'}
           </button>
-          {!isSignUp && (
-            <small className="text-muted">
-              <a href="#forgot-password" style={{ color: '#FF7A00' }}>
-                Forgot password?
-              </a>
-            </small>
-          )}
           <p className="text-center mt-4">
             {isSignUp ? 'Already have an account?' : "Don’t have an account?"}{' '}
             <a
