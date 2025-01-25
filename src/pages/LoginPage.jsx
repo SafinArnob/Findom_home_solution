@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaGoogle, FaLinkedin, FaFacebook, FaTwitter } from 'react-icons/fa';
 
 const LoginSignup = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -86,7 +87,7 @@ const LoginSignup = () => {
         }}
       >
         <div className="text-center text-dark">
-          <h1>{isSignUp ? 'New here?' : 'Welcome Back!'}</h1>
+          <h1>{isSignUp ? 'Find Faster \t live better ' : 'Welcome Back!'}</h1>
           <p>{isSignUp ? 'Create an account and get started' : 'Sign in to continue your journey'}</p>
           <button
             className="btn btn-outline-dark mt-4"
@@ -176,18 +177,6 @@ const LoginSignup = () => {
                   style={{ borderColor: '#FFB85C' }}
                 />
               </div>
-              <div className="mb-4">
-                <label htmlFor="rePassword" className="form-label">
-                  <strong>Re-check Password:</strong>
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="rePassword"
-                  placeholder="Re-enter Password"
-                  style={{ borderColor: '#FFB85C' }}
-                />
-              </div>
             </>
           )}
           {!isSignUp && (
@@ -229,16 +218,31 @@ const LoginSignup = () => {
           >
             {isSignUp ? 'Sign Up' : 'Login'}
           </button>
-          <p className="text-center mt-4">
-            {isSignUp ? 'Already have an account?' : "Don’t have an account?"}{' '}
-            <a
-              href="#toggle"
-              onClick={toggleForm}
-              style={{ color: '#FF7A00', fontWeight: 'bold' }}
-            >
-              {isSignUp ? 'Sign In' : 'Sign Up'}
-            </a>
-          </p>
+
+          {/* Social Login Options */}
+          <div
+            className="d-flex justify-content-center mt-3"
+            style={{
+              gap: '15px',
+            }}
+          >
+            <FaGoogle
+              size={30}
+              style={{ color: '#DB4437', cursor: 'pointer' }}
+            />
+            <FaFacebook
+              size={30}
+              style={{ color: '#4267B2', cursor: 'pointer' }}
+            />
+            <FaTwitter
+              size={30}
+              style={{ color: '#1DA1F2', cursor: 'pointer' }}
+            />
+            <FaLinkedin
+              size={30}
+              style={{ color: '#0077B5', cursor: 'pointer' }}
+            />
+          </div>
         </div>
       </div>
     </div>
