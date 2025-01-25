@@ -1,0 +1,178 @@
+/* Navbar Styling */
+.navbar {
+  z-index: 10;
+  position: relative; /* Ensures it's layered over the background */
+  background-color: #fff; /* Solid background for better readability */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean look */
+}
+
+.navbar a {
+  font-size: 1rem;
+  color: #333;
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+.navbar a:hover {
+  color: #ffd700; /* Yellow color on hover */
+}
+
+.navbar .nav-link.active {
+  color: #ffd700; /* Yellow color for active link */
+  font-weight: bold;
+}
+
+.navbar .btn-outline-dark {
+  border-radius: 20px;
+  padding: 5px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .btn-outline-dark:hover {
+  background-color: #333; /* Dark hover background */
+  color: #fff; /* White text */
+}
+
+.navbar .btn-outline-dark i {
+  font-size: 1rem;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #f8f9fa; /* Light gray background on hover */
+}
+
+/* Background Image Section */
+.background-image {
+  position: relative;
+  background-image: url("https://media.istockphoto.com/id/2165850543/photo/close-up-of-female-legs-in-hiking-boots-walks-on-ground-with-yellow-orange-dry-fall-leaves.jpg?s=2048x2048&w=is&k=20&c=u0IKbfsmzrXqET3AKMtkIRLIYIq_u5CMZZP7o-WYRfI=");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+
+.background-image .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
+  z-index: 1;
+}
+/* Filter Bar Styling */
+.filter-box-wrapper {
+  margin-top: -30px; /* Moves the box under the background image */
+  z-index: 2;
+  position: relative;
+}
+
+.filter-box {
+  border-radius: 10px;
+  padding: 15px 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adds spacing between items */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for the main filter box */
+}
+
+.filter-item {
+  flex: 1;
+  min-width: 200px; /* Prevents items from becoming too small */
+}
+
+.filter-box select {
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: border-color 0.3s ease;
+}
+
+.filter-box select:focus {
+  border-color: #ffd700; /* Yellow border on focus */
+}
+
+.filter-box button {
+  background-color: #ffd700; /* Yellow background for the search button */
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-box button:hover {
+  background-color: #e6b800; /* Darker yellow on hover */
+  transform: scale(1.05); /* Slightly enlarges button on hover */
+}
+
+.filter-box i {
+  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.filter-box i:hover {
+  color: #ffd700; /* Yellow icon on hover */
+}
+
+/* Advanced Filters Box Styling */
+.advanced-filters-box {
+  border-radius: 10px;
+  padding: 15px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for the advanced filters box */
+  margin-top: 15px; /* Adds spacing between the main filter box and advanced filters box */
+}
+
+.advanced-filters .row {
+  margin-bottom: 15px; /* Adds spacing between rows */
+}
+
+.advanced-filters .filter-item {
+  margin-bottom: 10px; /* Adds spacing between filter items */
+}
+
+.advanced-filters label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.advanced-filters .form-range {
+  width: 100%;
+}
+
+.advanced-filters .form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .filter-box {
+    flex-direction: column; /* Stacks items on smaller screens */
+    gap: 15px;
+  }
+
+  .filter-item {
+    max-width: 100%;
+  }
+
+  .navbar a {
+    font-size: 0.9rem;
+  }
+}
