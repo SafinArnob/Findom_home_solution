@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'; // Import useState and useEffect
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
 
 const Navbar = () => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -87,45 +87,99 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Listing
+                Rent
               </a>
               <ul className="dropdown-menu" aria-labelledby="listingDropdown">
                 <li>
-                  <a className="dropdown-item" href="#property-status">
-                    Property Status
-                  </a>
+                  {/* Use Link to navigate to Bachelor.jsx */}
+                  <Link className="dropdown-item" to="/bachelor">
+                    Bachelor House
+                  </Link>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#property-type">
-                    Property Type
+                    Family House
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#property-city">
-                    Property City
+                    SubLet House
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#property-city">
+                    Hostel
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#agency"
+                id="agencyDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Services
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="agencyDropdown">
+                <li>
+                  <a className="dropdown-item" href="#agency-list">
+                    Transportation
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#agency-profile">
+                    Labour
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#agency-services">
+                    House Helper
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#agency-reviews">
+                    Maintenance
                   </a>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#agency">
-                Agency
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#agent">
-                Agent
-              </a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link" href="#blog">
-                Blog
+                FAQ
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#pages">
-                Pages
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#pages"
+                id="pagesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                More
               </a>
+              <ul className="dropdown-menu" aria-labelledby="pagesDropdown">
+                <li>
+                  <a className="dropdown-item" href="#about-us">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#contact-us">
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#faq">
+                    About Us
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
 

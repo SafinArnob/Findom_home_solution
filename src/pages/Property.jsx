@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel } from 'swiper/modules'; // Import Mousewheel module
-import 'swiper/css'; // Import Swiper styles
-import 'swiper/css/navigation'; // Import Navigation styles
+import { Navigation, Mousewheel } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import PropertyCard from './../components/PropertyCard';
 
 const PropertySlider = () => {
@@ -11,68 +11,78 @@ const PropertySlider = () => {
       title: 'Sublate room',
       price: '$1,250,000',
       location: 'Badda, Dhaka',
-      image: 'hous1.jpg',
+      image: '/src/assets/images/house-1.jpg', // Local image path
     },
     {
       id: 2,
       title: 'Family flat',
       price: '$1,250,000',
       location: 'Badda',
-      image: 'https://via.placeholder.com/400x300',
+      image: '/src/assets/images/house-2.jpg', // Local image path
     },
     {
       id: 3,
       title: 'Sublate',
       price: '$1,250,000',
       location: 'Modhubag',
-      image: 'https://via.placeholder.com/400x300',
+      image: '/src/assets/images/house-3.jpg', // Local image path
     },
     {
       id: 4,
       title: 'Apartment',
       price: '$2,500,000',
       location: 'Collage Gate',
-      image: 'https://via.placeholder.com/400x300',
+      image: '/src/assets/images/house-4.jpg', // Local image path
     },
     {
       id: 5,
-      title: '1 Room',
+      title: 'Bachelor',
       price: '$3,000,000',
       location: 'Rampura',
-      image: 'https://via.placeholder.com/400x300',
+      image: '/src/assets/images/house-5.jpg', // Local image path
+    },
+    {
+      id: 6,
+      title: 'Hostel',
+      price: '$3,000,000',
+      location: 'Mohanagar',
+      image: '/src/assets/images/house-5.jpg', // Local image path
     },
   ];
 
   return (
     <div className="row mt-5">
       {/* Left Column: Heading */}
-      <div className="col-5 text-center">
-        <h1 className="text-3xl font-bold mb-3">Properties for Sale</h1>
-        <p className="text-muted mb-4">Listings we think you will love</p>
+      <div className="col-5 text-center mt-5">
+        <h1 className="text-3xl font-bold mt-5 " style={{ color: '#000966' }}>
+          TRENDING HOUSES
+        </h1>
+        <p className="text-muted mt-4">Discover the best home to your needs.</p>
       </div>
 
       {/* Right Column: Swiper Slider */}
       <div className="col-7">
         <Swiper
-          spaceBetween={20} // Space between slides
-          slidesPerView={3} // Number of slides visible at once
+          spaceBetween={20}
+          slidesPerView={3}
           navigation={{
-            nextEl: '.swiper-button-next', // Assign next button (optional)
-            prevEl: '.swiper-button-prev', // Assign previous button (optional)
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
           }}
-          modules={[Navigation, Mousewheel]} // Add Navigation and Mousewheel modules
+          modules={[Navigation, Mousewheel]}
           mousewheel={{
-            forceToAxis: true, // Restrict mousewheel scrolling to the slider axis
+            forceToAxis: true,
           }}
+          loop={true} // Enable continuous loop
           breakpoints={{
             320: {
-              slidesPerView: 1, // 1 slide on small screens
+              slidesPerView: 1,
             },
             768: {
-              slidesPerView: 2, // 2 slides on medium screens
+              slidesPerView: 2,
             },
             1024: {
-              slidesPerView: 3, // 3 slides on large screens
+              slidesPerView: 3,
             },
           }}
         >

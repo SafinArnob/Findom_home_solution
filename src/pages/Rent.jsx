@@ -1,6 +1,4 @@
-
 import { useNavigate } from "react-router-dom"; // React Router for navigation
-
 
 function Rent() {
   const navigate = useNavigate(); // React Router hook for navigation
@@ -10,10 +8,10 @@ function Rent() {
       {/* Header Section */}
       <section className="row">
         <div className="text-center mt-5">
-          <h1 className="display-4">
-            Looking to Rent a new property <span className="d-block">or Sell an existing one?</span>
+          <h1 className="display-4" style={{ color: 'rgb(8, 8, 112)' }}> {/* Deep navy color */}
+            Looking to Rent a new property <span className="d-block">or All Rent Services ?</span>
           </h1>
-          <p className="lead">Lorem dolor sit amet, disse suscipit sagittis leo sitea.</p>
+          <p className="lead">FindHome is the best solution for you</p>
         </div>
       </section>
 
@@ -21,11 +19,11 @@ function Rent() {
       <section className="container mt-5">
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {[
-            { icon: "bi-building", label: "Apartment", route: "/apartment" },
-            { icon: "bi-house", label: "House", route: "/house" },
-            { icon: "bi-briefcase", label: "Office", route: "/office" },
-            { icon: "bi-tree", label: "Villa", route: "/villa" },
-            { icon: "bi-building-up", label: "Luxury Homes", route: "/luxury-homes" },
+            { icon: "bi-person", label: "Bachelor", route: "/apartment" }, // Icon for Bachelor
+            { icon: "bi-people", label: "Family", route: "/house" }, // Icon for Family
+            { icon: "bi-house-door", label: "Sublet", route: "/office" }, // Icon for Sublet
+            { icon: "bi-truck", label: "Transportation", route: "/villa" }, // Icon for Transportation (Truck)
+            { icon: "bi-tools", label: "Services", route: "/luxury-homes" }, // Icon for Services
           ].map((card, index) => (
             <div key={index} className="col">
               <div

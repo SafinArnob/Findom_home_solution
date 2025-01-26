@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../styles/Home.css";
 import '../styles/rent_button.css';
 import FilterBar from './../components/FilterBar';
@@ -10,9 +11,15 @@ import PropertySlider from "./Property";
 
 function Home() {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleAdvanced = () => {
     setShowAdvancedFilters(!showAdvancedFilters);
+  };
+
+  // Function to handle navigation to All Houses page
+  const handleExploreClick = () => {
+    navigate("/all-houses"); // Navigate to the All Houses page
   };
 
   return (
@@ -22,13 +29,16 @@ function Home() {
 
       {/* Background Section with Text and Button */}
       <section className="background-image position-relative">
-  <div className="overlay"></div>
-  <div className="hero-content">
-    <h1>Find a Home<br></br> You will Love</h1>
-    <p>Discover a Place You ll Love to Live</p>
-    <button className="explore-button">Explore Houses</button>
-  </div>
-</section>
+        <div className="overlay"></div>
+        <div className="hero-content">
+          <h1>Find a Home<br></br> You'll Love</h1>
+          <p>Effortless House Rental & Services</p>
+          <button className="explore-button" onClick={handleExploreClick}>
+            Explore Houses
+          </button>
+        </div>
+      </section>
+
       {/* Filter Box Section */}
       <section className="filter-box-wrapper position-relative py-4">
         <div className="container">
@@ -49,8 +59,9 @@ function Home() {
           <Rent /> {/* Render the Rent component here */}
         </section>
 
-         {/* Property */}
-         <PropertySlider />
+        {/* Property */}
+        <PropertySlider />
+
         {/* Footer page */}
         <FooterPage />
       </section>

@@ -1,0 +1,30 @@
+/* Hover Effect for Boxes */
+.hover-effect {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  }
+  
+  .hover-effect:hover {
+    transform: scale(1.05); /* Slightly enlarge the box */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase shadow for depth */
+  }
+  
+  /* Hover Effect for Cards */
+  .col-md-4:hover .hover-effect {
+    transform: translateY(-5px);
+  }
+  
+  /* Footer Links Hover Effect */
+  .btn-link.hover-light:hover {
+    color: #ff853f !important; /* Theme color for hover */
+  }
+  
+  /* Social Icons Hover Effect */
+  .fab:hover {
+    color: #ff853f !important; /* Theme color for hover */
+    transition: color 0.3s ease;
+  }
