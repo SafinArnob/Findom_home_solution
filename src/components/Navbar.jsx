@@ -1,35 +1,30 @@
-import { useState, useEffect } from 'react'; // Import useState and useEffect
-import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
+import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset); // Track previous scroll position
-  const [visible, setVisible] = useState(true); // Control navbar visibility
+  const navigate = useNavigate();
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [visible, setVisible] = useState(true);
 
-  // Function to handle navigation to the Login page
   const handleLoginRegisterClick = () => {
-    navigate('/login'); // Navigate to the Login page
+    navigate('/login');
   };
 
-  // Effect to handle scroll events
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset; // Get current scroll position
+      const currentScrollPos = window.pageYOffset;
 
-      // Determine scroll direction
       if (prevScrollPos > currentScrollPos) {
-        setVisible(true); // Show navbar when scrolling up
+        setVisible(true);
       } else {
-        setVisible(false); // Hide navbar when scrolling down
+        setVisible(false);
       }
 
-      setPrevScrollPos(currentScrollPos); // Update previous scroll position
+      setPrevScrollPos(currentScrollPos);
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -40,21 +35,21 @@ const Navbar = () => {
       className="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm"
       style={{
         transition: 'top 0.3s',
-        top: visible ? '0' : '-70px', // Hide/show navbar based on scroll
-        paddingTop: '0.5rem', // Reduce padding to make navbar narrower
-        paddingBottom: '0.5rem', // Reduce padding to make navbar narrower
+        top: visible ? '0' : '-70px',
+        paddingTop: '0.5rem',
+        paddingBottom: '0.5rem',
       }}
     >
       <div className="container-fluid">
         {/* Logo */}
-        <div className="d-flex align-items-center me-auto" style={{ marginLeft: '20px' }}> {/* Added marginLeft */}
-          <a className="navbar-brand" href="/">
+        <div className="d-flex align-items-center me-auto" style={{ marginLeft: '20px' }}>
+          <Link className="navbar-brand" to="/">
             <img
-              src="/src/assets/images/logo_processed.jpg" // Replace with your logo path
+              src="/src/assets/images/logo_processed.jpg"
               alt="Logo"
-              style={{ height: '60px', width: '60px' }} // Increased logo size
+              style={{ height: '60px', width: '60px' }}
             />
-          </a>
+          </Link>
         </div>
 
         {/* Toggle Button */}
@@ -74,110 +69,109 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto" style={{ gap: '1.5rem' }}>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#listing"
+                to="#"
                 id="listingDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Rent
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="listingDropdown">
                 <li>
-                  {/* Use Link to navigate to Bachelor.jsx */}
                   <Link className="dropdown-item" to="/bachelor">
                     Bachelor House
                   </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#property-type">
+                  <Link className="dropdown-item" to="/family-house">
                     Family House
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#property-city">
+                  <Link className="dropdown-item" to="/sublet-house">
                     SubLet House
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#property-city">
+                  <Link className="dropdown-item" to="/hostel">
                     Hostel
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#agency"
+                to="#"
                 id="agencyDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Services
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="agencyDropdown">
                 <li>
-                  <a className="dropdown-item" href="#agency-list">
+                  <Link className="dropdown-item" to="/transportation">
                     Transportation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#agency-profile">
+                  <Link className="dropdown-item" to="/labour">
                     Labour
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#agency-services">
+                  <Link className="dropdown-item" to="/house-helper">
                     House Helper
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#agency-reviews">
+                  <Link className="dropdown-item" to="/maintenance">
                     Maintenance
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#blog">
+              <Link className="nav-link" to="/faq">
                 FAQ
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#pages"
+                to="#"
                 id="pagesDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 More
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="pagesDropdown">
                 <li>
-                  <a className="dropdown-item" href="#about-us">
+                  <Link className="dropdown-item" to="/blog">
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#contact-us">
+                  <Link className="dropdown-item" to="/contact-us">
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#faq">
+                  <Link className="dropdown-item" to="/about-us">
                     About Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -186,22 +180,22 @@ const Navbar = () => {
           {/* Right Side Buttons */}
           <div className="d-flex align-items-center gap-3">
             {/* Favorites Icon */}
-            <a className="btn btn-link text-dark text-decoration-none" href="#favorites">
-              <i className="bi bi-heart"></i> {/* Bootstrap Icons heart icon */}
-            </a>
+            <Link className="btn btn-link text-dark text-decoration-none" to="/favorites">
+              <i className="bi bi-heart"></i>
+            </Link>
 
             {/* Add Listing Button */}
-            <a
+            <Link
               className="btn btn-outline-dark d-flex align-items-center"
-              href="#add-listing"
+              to="/add-listing"
             >
               <i className="bi bi-house me-2"></i> Add Listing
-            </a>
+            </Link>
 
             {/* Login/Register Button */}
             <button
               className="btn btn-link text-dark text-decoration-none"
-              onClick={handleLoginRegisterClick} // Add onClick handler
+              onClick={handleLoginRegisterClick}
             >
               Login/Register
             </button>
