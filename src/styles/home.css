@@ -39,6 +39,44 @@
 .explore-button:hover {
   background-color: #ec530c;
 }
+
+/* Responsive Design for Hero Section */
+@media (max-width: 768px) {
+  .hero-content {
+    top: 50%; /* Adjust vertical alignment */
+    width: 100%; /* Ensure full width */
+    padding: 0 1rem; /* Add padding for small screens */
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem; /* Scale down heading */
+  }
+
+  .hero-content p {
+    font-size: 0.9rem; /* Smaller text */
+  }
+
+  .explore-button {
+    font-size: 1rem; /* Adjust button text size */
+    padding: 10px 20px; /* Reduce padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem; /* Further reduce for very small screens */
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+
+  .explore-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+
 /* Navbar Styling */
 .navbar {
   z-index: 10;

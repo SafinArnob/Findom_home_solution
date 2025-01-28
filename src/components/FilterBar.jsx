@@ -8,7 +8,7 @@ const FilterBar = ({ toggleAdvanced, showAdvanced }) => {
         {/* Main Filter Box */}
         <div className="filter-box bg-white shadow rounded p-4">
           {/* Main Filters */}
-          <div className="d-flex align-items-center gap-3 justify-content mx-auto">
+          <div className="d-flex align-items-center gap-3 justify-content mx-auto flex-wrap">
             {/* Status Dropdown */}
             <div className="filter-item flex-grow-1">
               <label className="d-block text-muted mb-1">Status</label>

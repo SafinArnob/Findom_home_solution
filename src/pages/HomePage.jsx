@@ -11,7 +11,7 @@ import PropertySlider from "./Property";
 
 function Home() {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const toggleAdvanced = () => {
     setShowAdvancedFilters(!showAdvancedFilters);
@@ -19,7 +19,7 @@ function Home() {
 
   // Function to handle navigation to All Houses page
   const handleExploreClick = () => {
-    navigate("/all-houses"); // Navigate to the All Houses page
+    navigate("/all-houses"); 
   };
 
   return (
@@ -31,7 +31,7 @@ function Home() {
       <section className="background-image position-relative">
         <div className="overlay"></div>
         <div className="hero-content">
-          <h1>Find a Home<br></br> You'll Love</h1>
+          <h1>Find a Home<br></br> You will Love</h1>
           <p>Effortless House Rental & Services</p>
           <button className="explore-button" onClick={handleExploreClick}>
             Explore Houses
@@ -56,7 +56,7 @@ function Home() {
 
         {/* Rent and Sell Section */}
         <section className="rent-sell-section">
-          <Rent /> {/* Render the Rent component here */}
+          <Rent /> 
         </section>
 
         {/* Property */}
