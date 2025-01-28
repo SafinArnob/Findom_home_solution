@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel } from 'swiper/modules';
+import { Pagination, Mousewheel } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import PropertyCard from './../components/PropertyCard';
 
 const PropertySlider = () => {
@@ -11,42 +11,42 @@ const PropertySlider = () => {
       title: 'Sublate room',
       price: '$1,250,000',
       location: 'Badda, Dhaka',
-      image: '/src/assets/images/house-1.jpg', // Local image path
+      image: '/src/assets/images/house-1.jpg',
     },
     {
       id: 2,
       title: 'Family flat',
       price: '$1,250,000',
       location: 'Badda',
-      image: '/src/assets/images/house-2.jpg', // Local image path
+      image: '/src/assets/images/house-2.jpg',
     },
     {
       id: 3,
       title: 'Sublate',
       price: '$1,250,000',
       location: 'Modhubag',
-      image: '/src/assets/images/house-3.jpg', // Local image path
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 4,
       title: 'Apartment',
       price: '$2,500,000',
       location: 'Collage Gate',
-      image: '/src/assets/images/house-4.jpg', // Local image path
+      image: '/src/assets/images/house-4.jpg',
     },
     {
       id: 5,
       title: 'Bachelor',
       price: '$3,000,000',
       location: 'Rampura',
-      image: '/src/assets/images/house-5.jpg', // Local image path
+      image: '/src/assets/images/house-5.jpg',
     },
     {
       id: 6,
       title: 'Hostel',
       price: '$3,000,000',
       location: 'Mohanagar',
-      image: '/src/assets/images/house-5.jpg', // Local image path
+      image: '/src/assets/images/house-5.jpg',
     },
   ];
 
@@ -61,19 +61,16 @@ const PropertySlider = () => {
       </div>
 
       {/* Right Column: Swiper Slider */}
-      <div className="col-7">
+      <div className="col-7 position-relative">
         <Swiper
           spaceBetween={20}
           slidesPerView={3}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          }}
-          modules={[Navigation, Mousewheel]}
-          mousewheel={{
-            forceToAxis: true,
-          }}
-          loop={true} // Enable continuous loop
+          loop={true}
+          grabCursor={true}
+          speed={500}
+          pagination={{ clickable: true }}
+          modules={[Pagination, Mousewheel]}
+          mousewheel={{ sensitivity: 1 }}
           breakpoints={{
             320: {
               slidesPerView: 1,
@@ -92,6 +89,11 @@ const PropertySlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Pagination Dots */}
+        <div className="swiper-pagination">
+          
+        </div>
       </div>
     </div>
   );

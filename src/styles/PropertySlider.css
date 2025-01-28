@@ -1,49 +1,23 @@
-/* Property Card Styling */
-.property-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .property-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Swiper Navigation Arrows */
-  .swiper-button-next,
-  .swiper-button-prev {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #000;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-  }
-  
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    background-color: rgba(255, 255, 255, 1);
-  }
-  
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .swiper-button-next,
-    .swiper-button-prev {
-      display: none; /* Hide arrows on small screens */
-    }
-  
-    .property-slider-container .flex {
-      flex-direction: column; /* Stack heading and slider on small screens */
-    }
-  
-    .property-slider-container h1 {
-      text-align: center; /* Center the heading on small screens */
-      margin-bottom: 20px; /* Add spacing between heading and slider */
-    }
-  }
+
+
+/* Adjust pagination dot position */
+.swiper-pagination {
+  position: absolute;
+  bottom: -20px; /* Moves dots below the slider */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Style pagination dots */
+.swiper-pagination-bullet {
+  background-color: #000966;
+  opacity: 0.6;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f97316; /* Orange active dot */
+  opacity: 1;
+}
+
