@@ -20,7 +20,7 @@ const LoginSignup = () => {
 
         {/* Curved Shade Section for Aesthetics */}
         <div className="position-absolute" style={{
-          width: '50%', height: '100%', backgroundColor: '#FF7A00',
+          width: '50%', height: '100%', backgroundColor: '#F9963F', // Light orange color
           borderTopRightRadius: activeTab === "signUp" ? '0' : '100% 50%',
           borderBottomRightRadius: activeTab === "signUp" ? '0' : '100% 50%',
           borderTopLeftRadius: activeTab === "signUp" ? '100% 50%' : '0',
