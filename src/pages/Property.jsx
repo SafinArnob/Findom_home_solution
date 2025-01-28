@@ -51,7 +51,7 @@ const PropertySlider = () => {
   ];
 
   return (
-    <div className="row mt-5">
+    <div className="row mt-5 w-100">
       {/* Left Column: Heading */}
       <div className="col-5 text-center mt-5">
         <h1 className="text-3xl font-bold mt-5 " style={{ color: '#000966' }}>
