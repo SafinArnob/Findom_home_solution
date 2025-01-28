@@ -6,7 +6,7 @@ import FilterBar from './../components/FilterBar';
 import AdvancedFilters from "../components/AdvancedFilters";
 import Navbar from "../components/Navbar";  // Import the Navbar component
 import Rent from './Rent';
-import FooterPage from './FooterPage';
+import AboutUs from './AboutUs';
 import PropertySlider from "./Property";
 
 function Home() {
@@ -53,9 +53,10 @@ function Home() {
             </div>
           </section>
         )}
+      </section>
 
-        {/* Rent and Sell Section */}
-        <section className="rent-sell-section">
+      {/* Rent and Sell Section */}
+      <section className="rent-sell-section">
           <Rent /> 
         </section>
 
@@ -63,8 +64,7 @@ function Home() {
         <PropertySlider />
 
         {/* Footer page */}
-        <FooterPage />
-      </section>
+        <AboutUs />
     </>
   );
 }

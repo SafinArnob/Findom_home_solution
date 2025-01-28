@@ -3,8 +3,8 @@ import { Navigation, Mousewheel } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import PropertyCard from './../components/PropertyCard';
-import FooterPage from './FooterPage'; // Import the FooterPage component
 import Navbar from "../components/Navbar";   // Import the Navbar component
+import AboutUs from './AboutUs';
 
 const Bachelor = () => {
   // Sample data for properties
@@ -269,7 +269,7 @@ const Bachelor = () => {
       </section>
 
       {/* Footer Section */}
-      <FooterPage /> {/* Include the FooterPage component here */}
+      <AboutUs /> {/* Include the FooterPage component here */}
     </>
   );
 };

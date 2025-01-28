@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { FaGoogle, FaLinkedin, FaFacebook, FaTwitter } from 'react-icons/fa';
 import Navbar from "../components/Navbar";   // Import the Navbar component
-import FooterPage from './FooterPage'; // Import the FooterPage component
+
+import AboutUs from './AboutUs';
 
 const LoginSignup = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -255,7 +256,7 @@ const LoginSignup = () => {
       </div>
 
       {/* Footer Section */}
-      <FooterPage />
+      <AboutUs />
     </>
   );
 };
