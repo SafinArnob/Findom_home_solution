@@ -1,0 +1,171 @@
+/* Style for the range sliders */
+.slider-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    cursor: pointer;
+    background: linear-gradient(to right, orange var(--progress), #ddd var(--progress)); /* Dynamic gradient */
+  }
+  
+  /* Custom Track */
+  .slider::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 5px;
+    background: transparent; /* Remove default background */
+  }
+  
+  .slider::-moz-range-track {
+    height: 6px;
+    border-radius: 5px;
+    background: transparent; /* Remove default background */
+  }
+  
+  /* The draggable thumb */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: orange;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: orange;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  /* Hover Effect */
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  /* Style for the filter box */
+  .filter-box {
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Style for the search bar container */
+  .search-bar-container {
+    position: absolute;
+    top: 50%; /* Align vertically with the Search button */
+    left: 100%; /* Position to the right of the Search button */
+    transform: translateY(-50%); /* Center vertically */
+    width: 250px; /* Adjust width as needed */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translateX(-100%) translateY(-50%); /* Start hidden under the Search button */
+    z-index: 10;
+  }
+  
+  .search-bar-container.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) translateY(-50%); /* Slide out to the right */
+  }
+  
+  /* Style for the search bar input and button */
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-group input {
+    flex: 1;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .input-group input:focus {
+    border-color: orange;
+  }
+  
+  .input-group button {
+    border-radius: 0 5px 5px 0;
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .input-group button:hover {
+    background-color: darkorange;
+  }
+  
+  /* Style for the Advanced Filters box */
+  .advanced-filters-box {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease, visibility 0.5s ease;
+  }
+  
+  .advanced-filters-box.visible {
+    max-height: 500px; /* Adjust based on content height */
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .filter-item {
+      width: 100%;
+    }
+  
+    .search-bar-container {
+      width: 100%; /* Full width on smaller screens */
+      left: 0;
+      transform: translateX(0) translateY(-50%); /* Reset transform */
+    }
+  
+    .search-bar-container.visible {
+      transform: translateX(0) translateY(-50%); /* Slide out to the right */
+    }
+  
+    .input-group {
+      flex-direction: column;
+    }
+  
+    .input-group input {
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+  
+    .input-group button {
+      border-radius: 5px;
+    }
+  }
