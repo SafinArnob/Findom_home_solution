@@ -157,17 +157,14 @@
 }
 
 .filter-box {
-  border-radius: 10px;
-  padding: 15px 20px;
   background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for the filter bar */
+  padding: 20px;
   display: flex;
   flex-wrap: wrap; /* Adjust layout for smaller screens */
   gap: 10px; /* Adds spacing between items */
-  transition: padding 0.3s ease; /* Smooth transition when expanded */
-}
-
-.filter-box.expanded {
-  padding: 20px 25px;
+  transition: all 0.3s ease; /* Smooth transition for expanding */
 }
 
 .filter-item {
@@ -213,13 +210,24 @@
   color: #ff6600; /* Yellow icon on hover */
 }
 
-/* Advanced Filters Section */
-.advanced-filters-section {
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: 10px;
-  box-shadow: 0 2px 4px rgba(240, 100, 6, 0.1);
+/* Advanced Filters Box */
+.advanced-filters-box {
+  background-color: #fff;
+  border-radius: 0 0 10px 10px; /* Rounded corners only at the bottom */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for the advanced filters */
+  padding: 20px;
+  margin-top: -10px; /* Overlap with the filter bar */
+  transition: all 0.3s ease; /* Smooth transition for expanding */
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially hidden */
+  transform: translateY(-10px); /* Slight upward shift for smooth reveal */
+}
+
+/* When Advanced Filters are visible */
+.advanced-filters-box.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 /* Responsive Design */
@@ -237,3 +245,4 @@
     font-size: 0.9rem;
   }
 }
+

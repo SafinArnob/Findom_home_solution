@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../styles/Home.css";
 import '../styles/rent_button.css';
 import FilterBar from './../components/FilterBar';
-import AdvancedFilters from "../components/AdvancedFilters";
 import Navbar from "../components/Navbar";  // Import the Navbar component
 import Rent from './Rent';
 import AboutUs from './AboutUs';
@@ -42,29 +41,20 @@ function Home() {
       {/* Filter Box Section */}
       <section className="filter-box-wrapper position-relative py-4">
         <div className="container">
-          <FilterBar toggleAdvanced={toggleAdvanced} />
+          <FilterBar toggleAdvanced={toggleAdvanced} showAdvanced={showAdvancedFilters} />
         </div>
-
-        {/* Advanced and Search */}
-        {showAdvancedFilters && (
-          <section className="advanced-filters-section py-4">
-            <div className="container">
-              <AdvancedFilters isVisible={showAdvancedFilters} />
-            </div>
-          </section>
-        )}
       </section>
 
       {/* Rent and Sell Section */}
       <section className="rent-sell-section">
-          <Rent /> 
-        </section>
+        <Rent /> 
+      </section>
 
-        {/* Property */}
-        <PropertySlider />
+      {/* Property */}
+      <PropertySlider />
 
-        {/* Footer page */}
-        <AboutUs />
+      {/* Footer page */}
+      <AboutUs />
     </>
   );
 }

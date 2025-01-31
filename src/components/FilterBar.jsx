@@ -3,7 +3,7 @@ import AdvancedFilters from './AdvancedFilters';
 
 const FilterBar = ({ toggleAdvanced, showAdvanced }) => {
   return (
-    <div className="filter-box-wrapper position-relative">
+    <div className="filter-box-wrapper">
       <div className="container">
         {/* Main Filter Box */}
         <div className="filter-box bg-white shadow rounded p-4">
@@ -43,7 +43,7 @@ const FilterBar = ({ toggleAdvanced, showAdvanced }) => {
             <div
               className="filter-item d-flex align-items-center justify-content-center cursor-pointer"
               onClick={toggleAdvanced}
-             >
+            >
               <i className={`bi ${showAdvanced ? 'bi-dash-circle' : 'bi-plus-circle'} me-2 text-dark`}></i>
               <span className="fw-bold">{showAdvanced ? 'Hide Advanced' : 'Advanced'}</span>
             </div>
@@ -55,9 +55,9 @@ const FilterBar = ({ toggleAdvanced, showAdvanced }) => {
 
         {/* Advanced Filters Box */}
         {showAdvanced && (
-          <div className="advanced-filters-box bg-white shadow rounded p-4 mt-3">
-            <AdvancedFilters />
-          </div>
+          <div className={`advanced-filters-box ${showAdvanced ? 'visible' : ''}`}>
+          <AdvancedFilters />
+        </div>
         )}
       </div>
     </div>

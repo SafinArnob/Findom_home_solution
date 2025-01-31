@@ -4,6 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import PropertyCard from './../components/PropertyCard';
 
+
 const PropertySlider = () => {
   const properties = [
     {
@@ -63,14 +64,21 @@ const PropertySlider = () => {
       {/* Right Column: Swiper Slider */}
       <div className="col-7 position-relative">
         <Swiper
+          style={{
+            '--swiper-pagination-bottom': '-5px', // Adjust the value as needed
+          }}
           spaceBetween={20}
           slidesPerView={3}
-          loop={true}
+          loop={false}
           grabCursor={true}
           speed={500}
           pagination={{ clickable: true }}
           modules={[Pagination, Mousewheel]}
-          mousewheel={{ sensitivity: 1 }}
+          mousewheel={{
+            sensitivity: 0.5, // Reduce sensitivity
+            forceToAxis: true, // Only horizontal scrolls will trigger the slider
+            releaseOnEdges: true, 
+          }}
           breakpoints={{
             320: {
               slidesPerView: 1,
@@ -89,11 +97,6 @@ const PropertySlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Pagination Dots */}
-        <div className="swiper-pagination">
-          
-        </div>
       </div>
     </div>
   );
