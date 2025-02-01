@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";  // Import the Navbar component
 import Rent from './Rent';
 import AboutUs from './AboutUs';
 import PropertySlider from "./Property";
+import StatsCounter from "../components/StatsCounter";
 
 function Home() {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
@@ -52,7 +53,8 @@ function Home() {
 
       {/* Property */}
       <PropertySlider />
-
+      {/* Stats Counter */}
+          <StatsCounter />
       {/* Footer page */}
       <AboutUs />
     </>
