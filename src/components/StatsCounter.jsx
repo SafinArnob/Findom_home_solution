@@ -51,7 +51,7 @@ const StatsCounter = () => {
     }, []);
 
     return (
-        <section className="py-16" style={{ backgroundColor: '#f8f9fa' }}>
+        <section className="container py-16" style={{ backgroundColor: 'white' }}>
             <div className='row w-100 justify-content-center'>
                 <div className="container px-4 row mt-4">
                     <h2 className="text-3xl font-bold text-center mb-4" style={{ color: '#f37329' }}>Our Impact</h2>

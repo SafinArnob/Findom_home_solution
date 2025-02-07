@@ -1,17 +1,32 @@
+/* Hover Effect for Cards */
 .hover-effect {
-    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     background-color: white; /* Default background */
-    color: black; /* Default text color */
-}
-
-.hover-effect:hover {
-    background-color: #f37329 !important; /* Change background to orange */
-    transform: scale(1.05); /* Slightly scale up */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
-    color: white !important; /* Change text color to white */
-}
-
-.hover-effect:hover h3,
-.hover-effect:hover p {
-    color: white !important; /* Change text color to white */
-}
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+  }
+  
+  .hover-effect:hover {
+    background-color: #f37329 !important; /* Orange background on hover */
+    transform: scale(1.05); /* Slightly enlarge the box */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase shadow for depth */
+    color: white !important; /* White text on hover */
+  }
+  
+  /* Hover Effect for Text Inside Cards */
+  .hover-effect:hover h3,
+  .hover-effect:hover p {
+    color: white !important; /* Ensure text color is white on hover */
+  }
+  
+  /* Hover Effect for Icons Inside Cards */
+  .hover-effect:hover .icon {
+    color: white !important; /* Ensure icon color is white on hover */
+  }
+  
+  /* Optional: Add a smooth transition for child elements */
+  .hover-effect * {
+    transition: color 0.3s ease;
+  }
