@@ -5,6 +5,7 @@ import Register from '../pages/RegisterPage';
 import AllHouses from '../pages/ALLHouses';
 import Bachelor from '../pages/Bachelor';
 import PropertyDetails from '../pages/PropertyDetails';
+import FAQPage from '../components/FAQ';
 
 function AppRouters() {
   return (
@@ -16,6 +17,7 @@ function AppRouters() {
         <Route path="/all-houses" element={<AllHouses />} />
         <Route path="/bachelor" element={<Bachelor />} />
         <Route path="/property/:id" element={<PropertyDetails />} /> {/* Property Details Page */}
+        <Route path="/faq"  element={<FAQPage/>}/>
       </Routes>
     </Router>
   );
