@@ -70,37 +70,37 @@ const AboutUs = () => {
               </div>
             </div>
 
-            {/* Third Column */}
-            <div className="col-md-4 text-center text-white mb-4">
-              <div
-                style={{
-                  backgroundColor: '#fff',
-                  borderRadius: '10px',
-                  padding: '10px',
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                  margin: '10px',
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease', // Add background-color transition
-                }}
-                className="hover-effect" // Added class for hover effect
-              >
-                <img
-                  src="https://media.istockphoto.com/id/1186072426/vector/core-values-set-icon.jpg?s=612x612&w=0&k=20&c=sYBQh-CBOxHksRZMvvQEyxqFQ4WWTdVzypGUtBbDWeI="
-                  alt="Trusted by Thousands"
-                  className="img-fluid rounded mb-3"
-                  style={{ height: '200px', width: '100%', objectFit: 'cover', borderRadius: '8px' }}
-                />
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#000' }}>Trusted by Thousands</h3>
-                <p style={{ fontSize: '1rem', color: darkBlue }}>
-                  Join thousands of satisfied customers who have found their perfect home with FindHome.
-                </p>
-              </div>
+          {/* Third Column */}
+          <div className="col-md-4 text-center text-white mb-4">
+            <div
+              style={{
+                backgroundColor: '#fff',
+                borderRadius: '10px',
+                padding: '10px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                margin: '10px',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Added transition for hover effect
+              }}
+              className="hover-effect" // Added class for hover effect
+            >
+              <img
+                src="https://media.istockphoto.com/id/1186072426/vector/core-values-set-icon.jpg?s=612x612&w=0&k=20&c=sYBQh-CBOxHksRZMvvQEyxqFQ4WWTdVzypGUtBbDWeI="
+                alt="Trusted by Thousands"
+                className="img-fluid rounded mb-3"
+                style={{ height: '200px', width: '100%', objectFit: 'cover', borderRadius: '8px' }}
+              />
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#000' }}>Trusted by Thousands</h3>
+              <p style={{ fontSize: '1rem', color: darkBlue }}>
+                Join thousands of satisfied customers who have found their perfect home with FindHome.
+              </p>
             </div>
           </div>
-        </section>
-      </section>
+        </div>
+      </section> 
+    </section>
 
-      {/* Footer Section */}
-      <Footer />
+    
+      
     </>
   );
 };

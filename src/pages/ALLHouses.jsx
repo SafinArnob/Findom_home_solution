@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import PropertyCard from './../components/PropertyCard';
 import Navbar from "../components/Navbar";   // Import the Navbar component
-import AboutUs from './AboutUs';
+import Footer from './Footer';
 
 const AllHouses = () => {
   // Sample data for properties
@@ -218,7 +218,7 @@ const AllHouses = () => {
       </section>
 
       {/* Footer Section */}
-      <AboutUs /> 
+      <Footer /> 
     </>
   );
 };
