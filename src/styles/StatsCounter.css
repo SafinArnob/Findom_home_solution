@@ -1,17 +1,17 @@
-/* Add this to your CSS file or style tag */
 .hover-effect {
     transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    background-color: white; /* Default background */
+    color: black; /* Default text color */
 }
 
 .hover-effect:hover {
-    background-color: #da5b1c; /* Orange background on hover */
-    transform: scale(1.05); /* Slightly scale up the cell */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
-    color: #f36c28; /* Change text color to white for better contrast */
+    background-color: #f37329 !important; /* Change background to orange */
+    transform: scale(1.05); /* Slightly scale up */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    color: white !important; /* Change text color to white */
 }
 
-.hover-effect:hover .icon,
 .hover-effect:hover h3,
 .hover-effect:hover p {
-    color:#f36c28;; /* Change icon, heading, and paragraph text color to white on hover */
+    color: white !important; /* Change text color to white */
 }

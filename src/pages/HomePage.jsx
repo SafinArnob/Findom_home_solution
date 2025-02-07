@@ -53,8 +53,10 @@ function Home() {
 
       {/* Property */}
       <PropertySlider />
+
       {/* Stats Counter */}
-          <StatsCounter />
+      <StatsCounter />
+
       {/* Footer page */}
       <AboutUs />
     </>

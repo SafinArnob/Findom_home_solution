@@ -1,18 +1,7 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import AdvancedFilters from './AdvancedFilters';
-import '../styles/AdvancedFilters.css'; // Import the CSS file for styling
 
 const FilterBar = ({ toggleAdvanced, showAdvanced }) => {
-  const [showSearchBar, setShowSearchBar] = useState(false); // State to control search bar visibility
-  const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
-
-  // Function to handle search
-  const handleSearch = () => {
-    console.log('Search Query:', searchQuery); // Replace with your search logic
-    alert(`You searched for: ${searchQuery}`); // Example action
-  };
-
   return (
     <div className="filter-box-wrapper">
       <div className="container">
@@ -60,42 +49,16 @@ const FilterBar = ({ toggleAdvanced, showAdvanced }) => {
             </div>
 
             {/* Search Button */}
-            <div className="filter-item position-relative">
-              <button
-                className="btn btn-warning px-4 fw-bold"
-                onClick={() => setShowSearchBar(!showSearchBar)} // Toggle search bar visibility
-              >
-                Search
-              </button>
-
-              {/* Search Bar */}
-              <div
-                className={`search-bar-container ${showSearchBar ? 'visible' : ''}`}
-              >
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter your search query..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)} // Update search query
-                  />
-                  <button
-                    className="btn btn-warning"
-                    onClick={handleSearch} // Trigger search
-                  >
-                    <i className="bi bi-search"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <button className="btn btn-warning px-4 fw-bold">Search</button>
           </div>
         </div>
 
         {/* Advanced Filters Box */}
-        <div className={`advanced-filters-box ${showAdvanced ? 'visible' : ''}`}>
+        {showAdvanced && (
+          <div className={`advanced-filters-box ${showAdvanced ? 'visible' : ''}`}>
           <AdvancedFilters />
         </div>
+        )}
       </div>
     </div>
   );
@@ -104,7 +67,7 @@ const FilterBar = ({ toggleAdvanced, showAdvanced }) => {
 // Define PropTypes
 FilterBar.propTypes = {
   toggleAdvanced: PropTypes.func.isRequired, // Function to toggle advanced filters
-  showAdvanced: PropTypes.bool.isRequired, // Boolean to track visibility of advanced filters
+  showAdvanced: PropTypes.bool.isRequired,  // Boolean to track visibility of advanced filters
 };
 
 export default FilterBar;

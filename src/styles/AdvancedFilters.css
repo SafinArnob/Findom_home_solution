@@ -1,11 +1,11 @@
-/* Style for the range sliders */
+
 .slider-container {
     width: 100%;
     margin-top: 10px;
   }
   
   .slider {
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     width: 100%;
     height: 6px;
     border-radius: 5px;
