@@ -8,6 +8,7 @@ import Rent from './Rent';
 import AboutUs from './AboutUs';
 import PropertySlider from "./Property";
 import StatsCounter from "../components/StatsCounter";
+import Footer from "./Footer";
 
 function Home() {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
@@ -59,6 +60,9 @@ function Home() {
 
       {/* Footer page */}
       <AboutUs />
+
+      {/* Footer page */}
+      <Footer />
     </>
   );
 }

@@ -101,8 +101,7 @@ const AboutUs = () => {
     </section>
 
     
-       {/* Footer Section */}
-       <Footer />
+      
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import '../styles/FAQ.css'; // Import your custom CSS file
 import Navbar from './Navbar'; // Import the Navbar component
+import Footer from '../pages/Footer';
 
 const FAQPage = () => {
     const [activeTab, setActiveTab] = useState('selling'); // State for active tab
@@ -81,14 +82,14 @@ const FAQPage = () => {
                                 className={`btn faq-tab-btn ${activeTab === 'selling' ? 'active' : ''
                                     }`}
                             >
-                                Question about selling
+                                Question about Renting
                             </button>
                             <button
                                 onClick={() => setActiveTab('renting')}
                                 className={`btn faq-tab-btn ${activeTab === 'renting' ? 'active' : ''
                                     }`}
                             >
-                                Question about renting
+                                Question about Servicees
                             </button>
                             <button
                                 onClick={() => setActiveTab('other')}
@@ -140,7 +141,7 @@ const FAQPage = () => {
                         <div className="sticky-top">
                             <div className="card shadow">
                                 <div className="card-body">
-                                    <h3 className="h5 fw-bold mb-3">Watch our video</h3>
+                                  
                                     <div className="ratio ratio-16x9 mb-3">
                                         <iframe
                                             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -148,16 +149,20 @@ const FAQPage = () => {
                                             allowFullScreen
                                         ></iframe>
                                     </div>
-                                    <p className="text-muted">
-                                        Learn more about our services and how we can help you.
-                                    </p>
+        
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Footer page */}
+         <Footer />
         </div>
+     
+
+        
     );
 };
 
