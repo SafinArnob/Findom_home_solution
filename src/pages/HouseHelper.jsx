@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import styles from '../styles/HouseHelper.module.css'; // Import the CSS Module
+import Footer from './Footer';
 
 const HouseHelper = () => {
   const [houseHelpers, setHouseHelpers] = useState([
@@ -245,6 +246,7 @@ const HouseHelper = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
