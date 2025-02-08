@@ -6,6 +6,7 @@ import AllHouses from '../pages/ALLHouses';
 import Bachelor from '../pages/Bachelor';
 import PropertyDetails from '../pages/PropertyDetails';
 import FAQPage from '../pages/FAQ';
+import Transportation from '../pages/transportation';
 
 function AppRouters() {
   return (
@@ -18,6 +19,7 @@ function AppRouters() {
         <Route path="/bachelor" element={<Bachelor />} />
         <Route path="/property/:id" element={<PropertyDetails />} /> {/* Property Details Page */}
         <Route path="/faq"  element={<FAQPage/>}/>
+        <Route path="/transportation" element={<Transportation/>}/>
       </Routes>
     </Router>
   );
