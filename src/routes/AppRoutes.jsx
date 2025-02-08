@@ -10,6 +10,8 @@ import Transportation from '../pages/transportation';
 import HouseHelper from '../pages/HouseHelper'; // Import the HouseHelper component
 import Family from '../pages/family-house';
 import Sublate from '../pages/Sublate';
+import Labour from '../pages/Labour';
+import Maintenance from '../pages/Maintenance';
 
 function AppRouters() {
   return (
@@ -26,6 +28,8 @@ function AppRouters() {
         <Route path="/faq"  element={<FAQPage/>}/>
         <Route path="/transportation" element={<Transportation/>}/>
         <Route path="/house-helper" element={<HouseHelper />} /> {/* House Helper Page */}
+        <Route path="/labour" element={<Labour />} />
+        <Route path="/maintenance" element={<Maintenance />} /> {/* Added Maintenance route */}
       </Routes>
     </Router>
   );
