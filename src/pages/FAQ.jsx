@@ -70,7 +70,7 @@ const FAQPage = () => {
                 </div>
 
                 {/* Page Title */}
-                <h1 className="display-4 fw-bold text-dark mb-5">Frequently asked questions</h1>
+                <h1 className="display-4 fw-bold mb-5" style={{ color: '#001f3f' }}>Frequently asked questions</h1>
 
                 <div className="row">
                     {/* FAQ Section */}
@@ -143,11 +143,15 @@ const FAQPage = () => {
                                 <div className="card-body">
                                   
                                     <div className="ratio ratio-16x9 mb-3">
-                                        <iframe
+                                        <iframe className='video'
                                             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                                             title="FAQ Video"
                                             allowFullScreen
                                         ></iframe>
+                                    </div>
+
+                                    <div className='YT-text'>
+                                        <h1 className='text-center'>Tutorial Video</h1>
                                     </div>
         
                                 </div>

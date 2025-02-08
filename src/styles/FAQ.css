@@ -65,6 +65,15 @@ h1, h2, h3 {
 
 .card-body {
   padding: 1.5rem;
+  margin-top: 25%;
+  border-radius: 20px;
+}
+.video{
+  border-radius: 20px;
+}
+.YT-text{
+  color: #001932;
+  font-weight: 900;
 }
 
 /* Responsive adjustments */
