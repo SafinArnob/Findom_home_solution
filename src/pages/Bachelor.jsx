@@ -1,277 +1,268 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import PropertyCard from './../components/PropertyCard';
-import Navbar from "../components/Navbar";   // Import the Navbar component
-import AboutUs from './AboutUs';
+import { useState } from 'react';
+import PropertyCard from '../components/PropertyCard';
+import FilterBar from '../components/FilterBar';
+import '../styles/bachelorPage.css';
+import Navbar from '../components/Navbar';
 
-const Bachelor = () => {
-  // Sample data for properties
-  const propertiesRow1 = [
+const RealEstatePage = () => {
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const toggleAdvanced = () => {
+    setShowAdvancedFilters(!showAdvancedFilters);
+  };
+  const [filters, setFilters] = useState({
+    bedrooms: '',
+    neighborhoods: '',
+    priceRange: [200, 2500000],
+    landAreaRange: [10, 1000],
+    otherFeatures: '',
+    states: '',
+    cities: '',
+  });
+
+  const [currentPage, setCurrentPage] = useState(1); // Current page state
+  const [sortOption, setSortOption] = useState('default'); // Sorting option state
+  const listingsPerPage = 6; // Number of listings per page
+
+  const listings = [
     {
       id: 1,
-      title: 'Sublate room',
-      price: '$1,250,000',
-      location: 'Badda, Dhaka',
-      image: '/src/assets/images/house-1.jpg', // Local image path
+      title: 'Bachelor',
+      location: '2150 Baseline St, Utica',
+      price: 550,
+      bedrooms: 3,
+      bathrooms: 2,
+      area: 900,
+      neighborhood: 'Downtown',
+      state: 'California',
+      city: 'Los Angeles',
+      image: '/src/assets/images/house-1.jpg',
     },
     {
       id: 2,
-      title: 'Family flat',
-      price: '$1,250,000',
-      location: 'Badda',
-      image: '/src/assets/images/house-2.jpg', // Local image path
+      title: 'Bachelor',
+      location: '283 Foxhall Ave, Kingston',
+      price: 550,
+      bedrooms: 3,
+      bathrooms: 2,
+      area: 900,
+      neighborhood: 'Suburb',
+      state: 'Texas',
+      city: 'Houston',
+      image: '../assets/images/house-1.jpg',
     },
     {
       id: 3,
-      title: 'Sublate',
-      price: '$1,250,000',
-      location: 'Modhubag',
-      image: '/src/assets/images/house-3.jpg', // Local image path
+      title: 'Bachelor',
+      location: '905 S Commerce St, Alice',
+      price: 550,
+      bedrooms: 3,
+      bathrooms: 2,
+      area: 900,
+      neighborhood: 'Rural',
+      state: 'New York',
+      city: 'New York City',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 4,
-      title: 'Apartment',
-      price: '$2,500,000',
-      location: 'Collage Gate',
-      image: '/src/assets/images/house-4.jpg', // Local image path
+      title: 'Bachelor',
+      location: '123 Main St, San Francisco',
+      price: 1200,
+      bedrooms: 2,
+      bathrooms: 1,
+      area: 800,
+      neighborhood: 'Downtown',
+      state: 'California',
+      city: 'San Francisco',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 5,
       title: 'Bachelor',
-      price: '$3,000,000',
-      location: 'Rampura',
-      image: '/src/assets/images/house-5.jpg', // Local image path
+      location: '456 Elm St, Austin',
+      price: 850,
+      bedrooms: 2,
+      bathrooms: 1,
+      area: 700,
+      neighborhood: 'Suburb',
+      state: 'Texas',
+      city: 'Austin',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 6,
-      title: 'Hostel',
-      price: '$3,000,000',
-      location: 'Mohanagar',
-      image: '/src/assets/images/house-5.jpg', // Local image path
+      title: 'Bachelor',
+      location: '789 Oak St, Chicago',
+      price: 950,
+      bedrooms: 4,
+      bathrooms: 3,
+      area: 1500,
+      neighborhood: 'Rural',
+      state: 'Illinois',
+      city: 'Chicago',
+      image: '/api/placeholder/400/300',
     },
-  ];
-
-  const propertiesRow2 = [
     {
       id: 7,
-      title: 'Luxury Apartment',
-      price: '$2,000,000',
-      location: 'Gulshan',
-      image: '/src/assets/images/house-6.jpg', // Local image path
+      title: 'Bachelor',
+      location: '101 Beach Ave, Miami',
+      price: 2000,
+      bedrooms: 3,
+      bathrooms: 2,
+      area: 1200,
+      neighborhood: 'Downtown',
+      state: 'Florida',
+      city: 'Miami',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 8,
-      title: 'Modern Villa',
-      price: '$3,500,000',
-      location: 'Banani',
-      image: '/src/assets/images/house-7.jpg', // Local image path
+      title: 'Bachelor',
+      location: '202 Mountain Rd, Denver',
+      price: 750,
+      bedrooms: 2,
+      bathrooms: 1,
+      area: 600,
+      neighborhood: 'Rural',
+      state: 'Colorado',
+      city: 'Denver',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 9,
-      title: 'Cozy Studio',
-      price: '$1,000,000',
-      location: 'Dhanmondi',
-      image: '/src/assets/images/house-8.jpg', // Local image path
+      title: 'Bachelor',
+      location: '303 Pine St, Seattle',
+      price: 1100,
+      bedrooms: 1,
+      bathrooms: 1,
+      area: 500,
+      neighborhood: 'Downtown',
+      state: 'Washington',
+      city: 'Seattle',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 10,
-      title: 'Penthouse',
-      price: '$4,000,000',
-      location: 'Uttara',
-      image: '/src/assets/images/house-9.jpg', // Local image path
-    },
-    {
-      id: 11,
-      title: 'Townhouse',
-      price: '$2,800,000',
-      location: 'Mirpur',
-      image: '/src/assets/images/house-10.jpg', // Local image path
-    },
-    {
-      id: 12,
-      title: 'Duplex',
-      price: '$3,200,000',
-      location: 'Baridhara',
-      image: '/src/assets/images/house-11.jpg', // Local image path
+      title: 'Bachelor',
+      location: '404 Ocean Dr, San Diego',
+      price: 1800,
+      bedrooms: 4,
+      bathrooms: 3,
+      area: 1600,
+      neighborhood: 'Suburb',
+      state: 'California',
+      city: 'San Diego',
+      image: '/api/placeholder/400/300',
     },
   ];
 
-  const propertiesRow3 = [
-    {
-      id: 13,
-      title: 'Country House',
-      price: '$1,800,000',
-      location: 'Savar',
-      image: '/src/assets/images/house-12.jpg', // Local image path
-    },
-    {
-      id: 14,
-      title: 'Beach House',
-      price: '$5,000,000',
-      location: 'Cox\'s Bazar',
-      image: '/src/assets/images/house-13.jpg', // Local image path
-    },
-    {
-      id: 15,
-      title: 'Mountain Cabin',
-      price: '$1,500,000',
-      location: 'Sylhet',
-      image: '/src/assets/images/house-14.jpg', // Local image path
-    },
-    {
-      id: 16,
-      title: 'Lake House',
-      price: '$2,200,000',
-      location: 'Rangamati',
-      image: '/src/assets/images/house-15.jpg', // Local image path
-    },
-    {
-      id: 17,
-      title: 'Farmhouse',
-      price: '$2,500,000',
-      location: 'Comilla',
-      image: '/src/assets/images/house-16.jpg', // Local image path
-    },
-    {
-      id: 18,
-      title: 'Eco Cottage',
-      price: '$1,200,000',
-      location: 'Khulna',
-      image: '/src/assets/images/house-17.jpg', // Local image path
-    },
-  ];
+  // Handle filter changes
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+    setCurrentPage(1); // Reset to the first page when filters change
+  };
+
+  // Filter the listings based on the selected filters
+  const filteredListings = listings.filter((listing) => {
+    return (
+      (filters.bedrooms === '' || listing.bedrooms === parseInt(filters.bedrooms)) &&
+      (filters.neighborhoods === '' || listing.neighborhood === filters.neighborhoods) &&
+      (filters.states === '' || listing.state === filters.states) &&
+      (filters.cities === '' || listing.city === filters.cities) &&
+      listing.price >= filters.priceRange[0] &&
+      listing.price <= filters.priceRange[1] &&
+      listing.area >= filters.landAreaRange[0] &&
+      listing.area <= filters.landAreaRange[1]
+    );
+  });
+
+  // Sort the listings based on the selected sorting option
+  const sortedListings = [...filteredListings].sort((a, b) => {
+    if (sortOption === 'lowToHigh') {
+      return a.price - b.price; // Sort by price (low to high)
+    } else if (sortOption === 'highToLow') {
+      return b.price - a.price; // Sort by price (high to low)
+    } else {
+      return 0; // Default sorting (no change)
+    }
+  });
+
+  // Pagination logic
+  const indexOfLastListing = currentPage * listingsPerPage;
+  const indexOfFirstListing = indexOfLastListing - listingsPerPage;
+  const currentListings = sortedListings.slice(indexOfFirstListing, indexOfLastListing);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <>
-      {/* Navbar Section */}
-      <Navbar /> {/* Include the Navbar component here */}
+    <div>
+      <Navbar />
 
-      {/* Bachelor House Content */}
-      <section className="container mx-auto px-4 py-8" style={{ marginTop: '80px' }}>
-        {/* First Row for Bachelor House */}
-        <div className="mb-12">
-          <h1 className="text-3xl font-bold text-center mb-8" style={{ color: 'rgb(8, 8, 112)' }}>
-            Most Rated
-          </h1>
-          <div className="w-full">
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={3}
-              navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }}
-              modules={[Navigation, Mousewheel]}
-              mousewheel={{
-                forceToAxis: true,
-              }}
-              loop={true}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                },
-                768: {
-                  slidesPerView: 2,
-                },
-                1024: {
-                  slidesPerView: 3,
-                },
-              }}
-            >
-              {propertiesRow1.map((property) => (
-                <SwiperSlide key={property.id}>
-                  <PropertyCard property={property} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-
-        {/* Second Row for Luxury Properties */}
-        <div className="mb-12">
-          <h1 className="text-3xl font-bold text-center mb-8" style={{ color: 'rgb(8, 8, 112)' }}>
-             Eligent
-          </h1>
-          <div className="w-full">
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={3}
-              navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }}
-              modules={[Navigation, Mousewheel]}
-              mousewheel={{
-                forceToAxis: true,
-              }}
-              loop={true}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                },
-                768: {
-                  slidesPerView: 2,
-                },
-                1024: {
-                  slidesPerView: 3,
-                },
-              }}
-            >
-              {propertiesRow2.map((property) => (
-                <SwiperSlide key={property.id}>
-                  <PropertyCard property={property} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-
-        {/* Third Row for Vacation Homes */}
-        <div className="mb-12">
-          <h1 className="text-3xl font-bold text-center mb-8" style={{ color: 'rgb(8, 8, 112)' }}>
-             Top Viewd
-          </h1>
-          <div className="w-full">
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={3}
-              navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }}
-              modules={[Navigation, Mousewheel]}
-              mousewheel={{
-                forceToAxis: true,
-              }}
-              loop={true}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                },
-                768: {
-                  slidesPerView: 2,
-                },
-                1024: {
-                  slidesPerView: 3,
-                },
-              }}
-            >
-              {propertiesRow3.map((property) => (
-                <SwiperSlide key={property.id}>
-                  <PropertyCard property={property} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+      {/* Background Section with Text and Button */}
+      <section className="background-image-bachelor position-relative">
+        <div className="overlay"></div>
+        <div className="hero-content">
+          {/* Add hero content here if needed */}
         </div>
       </section>
 
-      {/* Footer Section */}
-      <AboutUs /> {/* Include the FooterPage component here */}
-    </>
+      {/* Filter Box Section */}
+      <section className="filter-box-wrapper position-relative py-4">
+        <div className="container">
+          <FilterBar
+            toggleAdvanced={toggleAdvanced}
+            showAdvanced={showAdvancedFilters}
+            filters={filters}
+            onFilterChange={handleFilterChange}
+          />
+        </div>
+      </section>
+
+      {/* Listings Section */}
+      <main className="container">
+        <div className="listings-header">
+          <p>Showing {filteredListings.length} results</p>
+          <select
+            className="btn btn-secondary sorting-dropdown"
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+          >
+            <option value="default">Default sorting</option>
+            <option value="lowToHigh">Price: Low to High</option>
+            <option value="highToLow">Price: High to Low</option>
+          </select>
+        </div>
+
+        <div className="listings-grid">
+          {currentListings.map((listing) => (
+            <PropertyCard key={listing.id} property={listing} />
+          ))}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className="pagination">
+          <button
+            className="btn btn-secondary"
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="mx-3">
+            Page {currentPage} of {Math.ceil(filteredListings.length / listingsPerPage)}
+          </span>
+          <button
+            className="btn btn-secondary"
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === Math.ceil(filteredListings.length / listingsPerPage)}
+          >
+            Next
+          </button>
+        </div>
+      </main>
+    </div>
   );
 };
 
-export default Bachelor;
+export default RealEstatePage;

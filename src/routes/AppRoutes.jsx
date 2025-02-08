@@ -8,6 +8,8 @@ import PropertyDetails from '../pages/PropertyDetails';
 import FAQPage from '../pages/FAQ';
 import Transportation from '../pages/transportation';
 import HouseHelper from '../pages/HouseHelper'; // Import the HouseHelper component
+import Family from '../pages/family-house';
+import Sublate from '../pages/Sublate';
 
 function AppRouters() {
   return (
@@ -18,6 +20,8 @@ function AppRouters() {
         <Route path="/register" element={<Register />} />
         <Route path="/all-houses" element={<AllHouses />} />
         <Route path="/bachelor" element={<Bachelor />} />
+        <Route path="/family-house" element={<Family />} />
+        <Route path="/Sublate" element={<Sublate />} />
         <Route path="/property/:id" element={<PropertyDetails />} /> {/* Property Details Page */}
         <Route path="/faq"  element={<FAQPage/>}/>
         <Route path="/transportation" element={<Transportation/>}/>

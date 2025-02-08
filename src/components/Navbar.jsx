@@ -96,7 +96,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/sublet-house">
+                  <Link className="dropdown-item" to="/Sublate">
                     SubLet House
                   </Link>
                 </li>
