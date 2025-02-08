@@ -7,6 +7,7 @@ import Bachelor from '../pages/Bachelor';
 import PropertyDetails from '../pages/PropertyDetails';
 import FAQPage from '../pages/FAQ';
 import Transportation from '../pages/transportation';
+import HouseHelper from '../pages/HouseHelper'; // Import the HouseHelper component
 
 function AppRouters() {
   return (
@@ -20,6 +21,7 @@ function AppRouters() {
         <Route path="/property/:id" element={<PropertyDetails />} /> {/* Property Details Page */}
         <Route path="/faq"  element={<FAQPage/>}/>
         <Route path="/transportation" element={<Transportation/>}/>
+        <Route path="/house-helper" element={<HouseHelper />} /> {/* House Helper Page */}
       </Routes>
     </Router>
   );
