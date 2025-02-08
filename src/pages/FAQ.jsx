@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import '../styles/FAQ.css'; // Import your custom CSS file
-import Navbar from './Navbar'; // Import the Navbar component
+import Navbar from '../components/Navbar'; // Import the Navbar component
 import Footer from '../pages/Footer';
 
 const FAQPage = () => {

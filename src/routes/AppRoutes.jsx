@@ -5,7 +5,7 @@ import Register from '../pages/RegisterPage';
 import AllHouses from '../pages/ALLHouses';
 import Bachelor from '../pages/Bachelor';
 import PropertyDetails from '../pages/PropertyDetails';
-import FAQPage from '../components/FAQ';
+import FAQPage from '../pages/FAQ';
 
 function AppRouters() {
   return (

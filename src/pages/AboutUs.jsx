@@ -1,4 +1,4 @@
-import Footer from './Footer';
+
 
 const AboutUs = () => {
   // Custom dark blue color
@@ -97,10 +97,7 @@ const AboutUs = () => {
           </div>
         </div>
       </section> 
-    </section>
-
-    
-      
+    </section>     
     </>
   );
 };
