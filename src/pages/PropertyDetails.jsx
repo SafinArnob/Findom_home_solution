@@ -1,273 +1,333 @@
-import { MdOutlineLocationOn } from "react-icons/md";
-import { FaClock, FaEye, FaRegStar, FaShareAlt } from "react-icons/fa";
-import '../styles/DetailsPage.css'
-import Navbar from "../components/Navbar"; 
-
+import React, { useState } from "react";
+import "../styles/DetailsPage.css";
+import Navbar from "../components/Navbar";
+import Footer from "./Footer";
+import { Heart, Plus, Share2, Printer, MapPin, Home, Bed, Bath, Calendar, User, Phone, Mail, Star } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const DetailsPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const propertyData = {
+    title: "Store in Woodside, New York",
+    address: "39-11 61st St, Woodside, New York",
+    price: "$1,250,000",
+    views: "1853",
+    postedTime: "20 Days Ago",
+    images: [
+      "/src/assets/images/house-1.jpg",
+      "/src/assets/images/house-2.jpg",
+      "/src/assets/images/house-3.jpg",
+      "/src/assets/images/house-4.jpg",
+      "/src/assets/images/house-5.jpg",
+    ],
+  };
+
+  const openModal = (index) => {
+    setSelectedImageIndex(index);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
-      {/* Navbar Section */}
       <Navbar />
-
-    <div className="details-container mt-4">
-      <div className="img-section">
-          <div className="container">
-              <div className="row">
-              {/* Header Section */}
-              <div className="d-flex justify-content-between align-items-center">
-            <div className="d-flex align-items-center gap-2">
-              {/* Badges */}
-              <span className="badge featured-badge">FEATURED</span>
-              <span className="badge sale-badge">FOR SALE</span>
-
-              {/* Time & Views */}
-              <div className="d-flex align-items-center text-muted">
-                <FaClock className="me-1" />
-                <span className="me-2">4 years ago</span>
-                <FaEye className="me-1" />
-                <span>1753 views</span>
-              </div>
+      <div className="details-container">
+        {/* Header Section */}
+        <div className="details-header">
+          <div className="details-left-section">
+            <div className="details-tags">
+              <span className="details-featured">FEATURED</span>
+              <span className="details-for-sale">FOR Rent</span>
+              <span className="details-time-views">
+                <span>{propertyData.postedTime}</span>
+                <span>{propertyData.views} views</span>
+              </span>
             </div>
-
-              {/* Action Buttons */}
-              <div className="d-flex gap-2">
-                <button className="icon-btn">
-                  <FaRegStar />
-                </button>
-                {/* <button className="icon-btn">
-                  <FaPlus />
-                </button> */}
-                <button className="icon-btn">
-                  <FaShareAlt />
-                </button>
-                {/* <button className="icon-btn">
-                  <FaSave />
-                </button> */}
-              </div>
-            </div>
+            <h1 className="details-title">{propertyData.title}</h1>
+            <p className="details-address">{propertyData.address}</p>
           </div>
-
-          <div className="row home-location">
-            <div className="col-8">
-              <h1>Store in Woodside, New York</h1>
-              <p className="text-muted">
-                    <MdOutlineLocationOn /> 39-11 61st St, Woodside, New York
-              </p>
+          <div className="details-right-section">
+            <div className="details-action-buttons">
+              <button>
+                <Heart size={20} />
+              </button>
+              <button>
+                <Plus size={20} />
+              </button>
+              <button>
+                <Share2 size={20} />
+              </button>
+              <button>
+                <Printer size={20} />
+              </button>
             </div>
-            <div className="col-4">
-              <h2 className="text-end">$1,250,000</h2>
-            </div>
+            <div className="details-price">{propertyData.price}</div>
           </div>
+        </div>
 
-
-          {/* Image Gallery */}
-          <div className="row">
-            <div className="d-flex gap-2 mt-3">
-              <div className="flex-grow-1">
-                <img
-                  src="/src/assets/images/house-1.jpg"
-                  alt="Main"
-                  className="img-fluid rounded"
-                  style={{ height: "300px", objectFit: "cover" }} // Adjust height here
-                />
-              </div>
-              <div className="d-flex flex-column gap-2">
-                {[
-                  "/src/assets/images/house-1.jpg",
-                  "/src/assets/images/house-2.jpg",
-                  "/src/assets/images/house-3.jpg",
-                  "/src/assets/images/house-4.jpg",
-                ].map((src, idx) => (
-                  <img
-                    key={idx}
-                    src={src}
-                    alt={`Thumbnail ${idx}`}
-                    className="img-fluid rounded"
-                    style={{ height: "80px", objectFit: "cover" }} // Adjust thumbnail height
-                  />
-                ))}
-              </div>
-            </div>
+        {/* Image Grid */}
+        <div className="details-image-grid">
+          <div className="details-main-image" onClick={() => openModal(0)}>
+            <img src={propertyData.images[0]} alt="Main view" />
           </div>
-      </div>
-    </div>
+          <div className="details-side-images">
+            {propertyData.images.slice(1).map((image, index) => (
+              <div key={index} onClick={() => openModal(index + 1)}>
+                <img src={image} alt={`View ${index + 1}`} />
+              </div>
+            ))}
+          </div>
+        </div>
 
-      {/* Description Section */}
-      <div className="container box">
-        <div className="mt-4">
-          <h3>Description</h3>
-          <p className="text-muted">
-            Massa tempor nec feugiat nisl pretium. Egestas fringilla phasellus faucibus scelerisque eleifend donec. Porta nibh venenatis cras sed felis eget velit aliquet.
+        {/* Description and Overview Section */}
+        <div className="details-description">
+          <h2>Description</h2>
+          <p>
+            Massa tempor nec feugiat nisi pretium. Egestas fringilla phasellus faucibus scelerisque eleifend
+            donec. Porta nibh venenatis cras sed felis eget velit aliquet. Neque volutpat ac tincidunt vitae semper
+            quis lectus. Turpis in eu mi bibendum neque egestas congue quisque. Sed elementum tempus egestas
+            sed sed risus pretium quam. Dictumst sodales ut eu sem. Nibh mauris cursus mattis molestie a iaculis
+            at erat pellentesque. Id interdum velit laoreet id donec ultrices tincidunt.
           </p>
         </div>
-      </div>
 
-      {/* Overview Section */}
-      <div className="container box">
-          <div className=" overview-section">
-            <h2>Overview</h2>
-            <div className="row">
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">ID</div>
-                            <div className="stat-value">2297</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">Type</div>
-                            <div className="stat-value">House</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M3 22v-7.5h6V22"></path>
-                            <path d="M21 22v-7.5h-6V22"></path>
-                            <path d="M3 9l9-7 9 7"></path>
-                            <path d="M13.5 14.5h-3v3h3z"></path>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">Bedrooms</div>
-                            <div className="stat-value">3</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M3 14h4"></path>
-                            <path d="M17 14h4"></path>
-                            <path d="M3 7h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"></path>
-                            <path d="M21 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"></path>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">Bathrooms</div>
-                            <div className="stat-value">2</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                            <path d="M3 8h18"></path>
-                            <path d="M8 3v18"></path>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">Garages</div>
-                            <div className="stat-value">1</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                            <path d="M3 12h18"></path>
-                            <path d="M12 3v18"></path>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">Size</div>
-                            <div className="stat-value">900 SqFt</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M21 21H3v-7.5h18V21z"></path>
-                            <path d="M3 9l9-7 9 7"></path>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">Land Size</div>
-                            <div className="stat-value">2,000 SqFt</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="col-6 col-md-3">
-                    <div className="property-stat">
-                        <svg className="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M2 20h20"></path>
-                            <path d="M5 20v-8l7-4 7 4v8"></path>
-                            <path d="M12 8V4"></path>
-                        </svg>
-                        <div className="stat-content">
-                            <div className="stat-label">Year Built</div>
-                            <div className="stat-value">2020</div>
-                        </div>
-                    </div>
-                </div>
+        <div className="details-overview">
+          <div className="details-overview-item">
+            <Home />
+            <div>
+              <h3>Type</h3>
+              <p>House</p>
             </div>
+          </div>
+          <div className="details-overview-item">
+            <Bed />
+            <div>
+              <h3>Bedrooms</h3>
+              <p>2,000 SqFt</p>
+            </div>
+          </div>
+          <div className="details-overview-item">
+            <Bath />
+            <div>
+              <h3>Bathrooms</h3>
+              <p>2</p>
+            </div>
+          </div>
+          <div className="details-overview-item">
+            <Calendar />
+            <div>
+              <h3>Year Built</h3>
+              <p>2020</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Property Details and Features Section */}
+        <div className="details-property-features">
+          <div className="details-property-details">
+            <h2>Details</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Property ID</td>
+                  <td>2297</td>
+                  <td>Price</td>
+                  <td>$1,250,000</td>
+                </tr>
+                <tr>
+                  <td>Property Type</td>
+                  <td>House</td>
+                  <td>Property Status</td>
+                  <td>For Sale</td>
+                </tr>
+                <tr>
+                  <td>Rooms</td>
+                  <td>4</td>
+                  <td>Bedrooms</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>Bathrooms</td>
+                  <td>2</td>
+                  <td>Year Built</td>
+                  <td>2020</td>
+                </tr>
+                <tr>
+                  <td>Size</td>
+                  <td>900 SqFt</td>
+                  <td>Land Area</td>
+                  <td>2,000 SqFt</td>
+                </tr>
+                <tr>
+                  <td>Garages</td>
+                  <td>1</td>
+                  <td>Garage Area</td>
+                  <td>50 SqFt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="details-features">
+            <h2>Features</h2>
+            <ul>
+              <li>✓ Gym</li>
+              <li>✓ Laundry</li>
+              <li>✓ Lawn</li>
+              <li>✓ Microwave</li>
+              <li>✓ Outdoor Shower</li>
+              <li>✓ Refrigerator</li>
+              <li>✓ Sauna</li>
+              <li>✓ Swimming Pool</li>
+              <li>✓ TV Cable</li>
+              <li>✓ Washer</li>
+              <li>✓ Wifi</li>
+              <li>✓ Window Coverings</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Rating & Reviews Section */}
+        <div className="details-rating-reviews">
+          <h2>Rating & Reviews</h2>
+          <div className="details-average-rating">
+            <h3>Average User Rating</h3>
+            <p>4.7/ 5</p>
+          </div>
+          <div className="details-rating-breakdown">
+            <h3>Rating Breakdown</h3>
+            <div className="rating-bars">
+              {/* 5 Stars */}
+              <div className="rating-bar">
+                <div className="stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="orange" color="orange" />
+                  ))}
+                </div>
+                <div className="bar">
+                  <div className="fill" style={{ width: "60%" }}></div>
+                </div>
+                <span>60%</span>
+              </div>
+              {/* 4 Stars */}
+              <div className="rating-bar">
+                <div className="stars">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} size={16} fill="orange" color="orange" />
+                  ))}
+                </div>
+                <div className="bar">
+                  <div className="fill" style={{ width: "20%" }}></div>
+                </div>
+                <span>20%</span>
+              </div>
+              {/* 3 Stars */}
+              <div className="rating-bar">
+                <div className="stars">
+                  {[...Array(3)].map((_, i) => (
+                    <Star key={i} size={16} fill="orange" color="orange" />
+                  ))}
+                </div>
+                <div className="bar">
+                  <div className="fill" style={{ width: "10%" }}></div>
+                </div>
+                <span>10%</span>
+              </div>
+              {/* 2 Stars */}
+              <div className="rating-bar">
+                <div className="stars">
+                  {[...Array(2)].map((_, i) => (
+                    <Star key={i} size={16} fill="orange" color="orange" />
+                  ))}
+                </div>
+                <div className="bar">
+                  <div className="fill" style={{ width: "5%" }}></div>
+                </div>
+                <span>5%</span>
+              </div>
+              {/* 1 Star */}
+              <div className="rating-bar">
+                <div className="stars">
+                  <Star size={16} fill="orange" color="orange" />
+                </div>
+                <div className="bar">
+                  <div className="fill" style={{ width: "5%" }}></div>
+                </div>
+                <span>5%</span>
+              </div>
+            </div>
+          </div>
+          <div className="details-write-review">
+            <h3>Write A Review</h3>
+            <p>You must be <button className="btn text-danger">logged in </button>  to post a review.</p>
+          </div>
+        </div>
+
+        {/* Address Section */}
+        <div className="details-address-section">
+          <h2>Address</h2>
+          <p><strong>Address:</strong> 39-11 GHS St, Woodside, New York</p>
+          <p><strong>Country:</strong> United States</p>
+          <p><strong>City/Town:</strong> New York</p>
+          <button className="show-on-map-button">
+            <MapPin size={20} /> Show on Map
+          </button>
+        </div>
+
+        {/* Contact Section */}
+        <div className="details-contact-section">
+          <h2>Contact</h2>
+          <div className="details-contact-info">
+            <User />
+            <p><strong>Jimmy Palmer</strong> - Real estate broker</p>
+          </div>
+          <div className="details-contact-info">
+            <Phone />
+            <p>+49 0399 909 039</p>
+          </div>
+          <div className="details-contact-info">
+            <Mail />
+            <p>b.gordon@homeld.com</p>
+          </div>
+          <form className="details-contact-form">
+            <input type="text" placeholder="Full Name *" required />
+            <input type="tel" placeholder="Phone Number *" required />
+            <input type="email" placeholder="Email Address *" required />
+            <textarea placeholder="Hello, I am interested in Store in Woodside." rows="4" required />
+            <button type="submit">Send Message</button>
+          </form>
         </div>
       </div>
 
-      {/* Address Section */}
-<div className="container box">
-  <div className="mt-4">
-    <h3>Address</h3>
-    <div className="address-section">
-      <div className="address-item">
-        <span className="address-label">Address</span>
-        <span className="address-value">393 Lewis Ave, Brooklyn, New York</span>
-      </div>
-      <div className="address-item">
-        <span className="address-label">Country</span>
-        <span className="address-value">United States</span>
-      </div>
-      <div className="address-item">
-        <span className="address-label">Province/State</span>
-        <span className="address-value">New York</span>
-      </div>
-      <div className="address-item">
-        <span className="address-label">City/Town</span>
-        <span className="address-value">New York</span>
-      </div>
-      <div className="address-item">
-        <span className="address-label">Neighborhood</span>
-        <span className="address-value">South New York</span>
-      </div>
-    </div>
-  </div>
-</div>
+      {/* Modal for Image Carousel */}
+      {isModalOpen && (
+        <div className="details-modal-overlay" onClick={closeModal}>
+          <div className="details-modal-content" onClick={(e) => e.stopPropagation()}>
+            <Swiper
+              navigation={true}
+              modules={[Navigation]}
+              initialSlide={selectedImageIndex}
+              className="details-modal-swiper"
+            >
+              {propertyData.images.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <img src={image} alt={`View ${index}`} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      )}
 
-      {/* Details Section */}
-      <div className="container box">
-      <div className="mt-4">
-        <h3>Details</h3>
-        <p>Property ID: 2297</p>
-        <p>Property Type: House</p>
-        <p>Price: $1,250,000</p>
-        <p>Rooms: 4</p>
-        <p>Bathrooms: 2</p>
-        <p>Year Built: 2020</p>
-        <p>Land Area: 2,000 SqFt</p>
-      </div>
-      </div>
-    </div>
+      <Footer />
     </>
   );
 };

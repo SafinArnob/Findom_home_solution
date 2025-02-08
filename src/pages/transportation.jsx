@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../styles/transportation.css";
 import Navbar from "../components/Navbar";
 import Footer from "./Footer";
-import { FaTruck, FaClock, FaMobileAlt, FaUser, FaArrowDown } from "react-icons/fa";
+import { FaTruck, FaClock, FaMobileAlt, FaUser, FaArrowDown, FaSearch } from "react-icons/fa";
 
 const trucks = [
   {
@@ -171,47 +171,52 @@ function Transportation() {
       </section>
 
       <div className="truck-container">
-        <div className="search-filter">
-          <input
-            type="text"
-            placeholder="ট্রাক অনুসন্ধান করুন..."
-            value={searchQuery}
-            onChange={handleSearch}
-            className="search-input"
-          />
-          <div className="filter-bar">
-            <select
-              name="price"
-              value={filters.price}
-              onChange={handleFilterChange}
-            >
-              <option value="">সর্বোচ্চ মূল্য</option>
-              <option value="500">৳ ৫০০</option>
-              <option value="700">৳ ৭০০</option>
-              <option value="1000">৳ ১০০০</option>
-            </select>
-            <select
-              name="area"
-              value={filters.area}
-              onChange={handleFilterChange}
-            >
-              <option value="">এলাকা</option>
-              <option value="মোহাম্মদপুর">মোহাম্মদপুর</option>
-              <option value="রামপুরা">রামপুরা</option>
-              <option value="মধুবাগ">মধুবাগ</option>
-              <option value="উত্তরা">উত্তরা</option>
-              <option value="ধানমন্ডি">ধানমন্ডি</option>
-              <option value="আজিমপুর">আজিমপুর</option>
-            </select>
-            <select
-              name="type"
-              value={filters.type}
-              onChange={handleFilterChange}
-            >
-              <option value="">ট্রাকের ধরন</option>
-              <option value="ভ্যান">ভ্যান</option>
-              <option value="পিক আপ">পিক আপ</option>
-            </select>
+        <div className="search-filter-container">
+          <div className="search-filter">
+            <div className="filter-bar">
+              <select
+                name="price"
+                value={filters.price}
+                onChange={handleFilterChange}
+              >
+                <option value="">সর্বোচ্চ মূল্য</option>
+                <option value="500">৳ ৫০০</option>
+                <option value="700">৳ ৭০০</option>
+                <option value="1000">৳ ১০০০</option>
+              </select>
+              <select
+                name="area"
+                value={filters.area}
+                onChange={handleFilterChange}
+              >
+                <option value="">এলাকা</option>
+                <option value="মোহাম্মদপুর">মোহাম্মদপুর</option>
+                <option value="রামপুরা">রামপুরা</option>
+                <option value="মধুবাগ">মধুবাগ</option>
+                <option value="উত্তরা">উত্তরা</option>
+                <option value="ধানমন্ডি">ধানমন্ডি</option>
+                <option value="আজিমপুর">আজিমপুর</option>
+              </select>
+              <select
+                name="type"
+                value={filters.type}
+                onChange={handleFilterChange}
+              >
+                <option value="">ট্রাকের ধরন</option>
+                <option value="ভ্যান">ভ্যান</option>
+                <option value="পিক আপ">পিক আপ</option>
+              </select>
+              <div className="search-box">
+                <input
+                  type="text"
+                  placeholder="ট্রাক অনুসন্ধান করুন..."
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  className="search-input"
+                />
+                <FaSearch className="search-icon" />
+              </div>
+            </div>
           </div>
         </div>
         <div className="truck-list">
@@ -231,9 +236,8 @@ function Transportation() {
                 onClick={() => toggleDescription(truck.id)}
               >
                 <FaArrowDown
-                  className={`down-arrow ${
-                    expandedTrucks.includes(truck.id) ? "rotate" : ""
-                  }`}
+                  className={`down-arrow ${expandedTrucks.includes(truck.id) ? "rotate" : ""
+                    }`}
                 />
               </div>
               {expandedTrucks.includes(truck.id) && (
@@ -257,7 +261,13 @@ function Transportation() {
           ))}
         </div>
       </div>
-
+      <div className="static-image-container">
+        <img
+          src="src/assets/images/transportation.png" 
+          alt="Static Image"
+          className="static-image"
+        />
+      </div>
       <Footer />
     </>
   );
