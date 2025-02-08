@@ -2,67 +2,79 @@
 
 /* Button styling */
 .faq-tab-btn {
-    background-color: #f8f9fa; /* Light gray background */
-    border: 1px solid #dee2e6; /* Light gray border */
-    color: #495057; /* Dark gray text */
-    font-weight: 500;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  .faq-tab-btn.active {
-    background-color: #ff6b35; /* Orange background for active button */
-    border-color: #ff6b35;
-    color: white; /* White text for active button */
-  }
-  
-  .faq-tab-btn:hover {
-    background-color: #ff6b35; /* Orange background on hover */
-    border-color: #ff6b35;
-    color: white; /* White text on hover */
-  }
-  
-  /* FAQ question button styling */
-  .faq-question-btn {
-    background-color: white;
-    border: 1px solid #dee2e6;
-    color: #495057;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-  
-  .faq-question-btn:hover {
-    background-color: #f8f9fa; /* Light gray background on hover */
-  }
-  
-  /* Font styling */
-  body {
-    font-family: 'Arial', sans-serif; /* Use Arial or the font from your design */
-  }
-  
-  h1, h2, h3 {
-    font-weight: 700; /* Bold font for headings */
-  }
-  
-  /* Video card styling */
-  .card {
-    border: none;
-    border-radius: 10px;
-  }
-  
-  .card-body {
-    padding: 1.5rem;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .d-flex.gap-3 {
+  background-color: #f8f9fa; /* Light gray background */
+  border: 1px solid #dee2e6; /* Light gray border */
+  color: #495057; /* Dark gray text */
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.faq-tab-btn.active {
+  background-color: #ff6b35; /* Orange background for active button */
+  border-color: #ff6b35;
+  color: white; /* White text for active button */
+}
+
+.faq-tab-btn:hover {
+  background-color: #ff6b35; /* Orange background on hover */
+  border-color: #ff6b35;
+  color: white; /* White text on hover */
+}
+
+/* FAQ question button styling */
+.faq-question-btn {
+  background-color: white;
+  border: none; /* Remove border */
+  color: #575757; /* Darker text color for the question */
+  font-weight: 900; /* Bold font for the question */
+  transition: all 0.3s ease;
+  padding: 1rem; /* Add padding for better spacing */
+  width: 100%; /* Full width */
+  text-align: left; /* Align text to the left */
+}
+
+.faq-question-btn:hover {
+  color: #001932; /* Light gray background on hover */
+}
+
+/* Remove border and adjust spacing for the answer */
+.faq-answer {
+  background-color: #f8f9fa; /* Light gray background for the answer */
+  border: none; /* Remove border */
+  padding: 1rem; /* Add padding */
+  margin-top: 0.5rem; /* Add margin to separate from the question */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Font styling */
+body {
+  font-family: 'Arial', sans-serif; /* Use Arial or the font from your design */
+}
+
+h1, h2, h3 {
+  font-weight: 700; /* Bold font for headings */
+}
+
+/* Video card styling */
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .d-flex.gap-3 {
       flex-direction: column;
       gap: 10px !important;
-    }
-  
-    .btn {
-      width: 100%;
-    }
   }
+
+  .btn {
+      width: 100%;
+  }
+}

@@ -113,12 +113,12 @@ const FAQPage = () => {
                                 {faqData[activeTab].map((item, index) => (
                                     <div key={index} className="list-group-item border-0 p-0 mb-3">
                                         <button
-                                            className="d-flex justify-content-between align-items-center w-100 p-3 bg-white border rounded text-start faq-question-btn"
+                                            className="d-flex justify-content-between align-items-center w-100 p-3 text-start font-weight-bold faq-question-btn"
                                             onClick={() =>
                                                 setActiveQuestion(activeQuestion === index ? null : index)
                                             }
                                         >
-                                            <span className="fw-medium">{item.question}</span>
+                                            <h5><span className="fw-medium">{item.question}</span></h5>
                                             <ChevronDown
                                                 className={`ms-2 transition-transform ${activeQuestion === index ? 'rotate-180' : ''
                                                     }`}
@@ -126,7 +126,7 @@ const FAQPage = () => {
                                             />
                                         </button>
                                         {activeQuestion === index && (
-                                            <div className="p-3 bg-light border rounded mt-2">
+                                            <div className="p-3 mt-2">
                                                 <p className="mb-0">{item.answer}</p>
                                             </div>
                                         )}
@@ -139,7 +139,7 @@ const FAQPage = () => {
                     {/* Video Section */}
                     <div className="col-lg-4">
                         <div className="sticky-top">
-                            <div className="card shadow">
+                            <div >
                                 <div className="card-body">
                                   
                                     <div className="ratio ratio-16x9 mb-3">

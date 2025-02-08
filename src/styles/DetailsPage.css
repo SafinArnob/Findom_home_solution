@@ -101,3 +101,25 @@ h2 {
 .home-location{
     margin-top: 2%;
 }
+.address-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Adjust the gap between items */
+  }
+  
+  .address-item {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Adjust the gap between label and value */
+  }
+  
+  .address-label {
+    font-weight: bold;
+    min-width: 120px; /* Ensure labels have a consistent width */
+    color: #333; /* Darker color for labels */
+  }
+  
+  .address-value {
+    color: #666; /* Lighter color for values */
+    margin: 0; /* Remove default margin */
+  }

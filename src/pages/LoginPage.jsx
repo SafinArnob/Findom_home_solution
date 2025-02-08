@@ -1,13 +1,36 @@
 import { useState } from 'react';
-import { FaGoogle, FaLinkedin, FaFacebook, FaTwitter } from 'react-icons/fa';
-import Navbar from "../components/Navbar";  
+import { FaGoogle, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import Navbar from "../components/Navbar";
 import AboutUs from './AboutUs';
 
 const LoginSignup = () => {
-  const [activeTab, setActiveTab] = useState("userLogin");  // Tracks current tab
+  const [activeTab, setActiveTab] = useState("userLogin"); // Tracks current tab
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+    adminId: '',
+  });
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (activeTab === "signUp") {
+      console.log("Sign Up Data:", formData);
+    } else if (activeTab === "userLogin") {
+      console.log("User Login Data:", { phone: formData.phone, password: formData.password });
+    } else if (activeTab === "adminLogin") {
+      console.log("Admin Login Data:", { adminId: formData.adminId, password: formData.password });
+    }
   };
 
   return (
@@ -57,46 +80,49 @@ const LoginSignup = () => {
               {activeTab === "signUp" ? "Fill in your details to create an account" : "Enter your credentials to access your account"}
             </p>
 
-            {/* User Sign Up Form */}
-            {activeTab === "signUp" && (
-              <>
-                <div className="mb-4">
-                  <label className="form-label"><strong>Name:</strong></label>
-                  <input type="text" className="form-control" placeholder="Your Name" />
-                </div>
-                <div className="mb-4">
-                  <label className="form-label"><strong>Phone Number:</strong></label>
-                  <input type="tel" className="form-control" placeholder="+1234567890" />
-                </div>
-                <div className="mb-4">
-                  <label className="form-label"><strong>Email:</strong></label>
-                  <input type="email" className="form-control" placeholder="example@mail.com" />
-                </div>
-                <div className="mb-4">
-                  <label className="form-label"><strong>Password:</strong></label>
-                  <input type="password" className="form-control" placeholder="Password" />
-                </div>
-              </>
-            )}
+            {/* Form */}
+            <form onSubmit={handleSubmit}>
+              {/* User Sign Up Form */}
+              {activeTab === "signUp" && (
+                <>
+                  <div className="mb-4">
+                    <label className="form-label"><strong>Name:</strong></label>
+                    <input type="text" name="name" className="form-control" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
+                  </div>
+                  <div className="mb-4">
+                    <label className="form-label"><strong>Phone Number:</strong></label>
+                    <input type="tel" name="phone" className="form-control" placeholder="+1234567890" value={formData.phone} onChange={handleInputChange} required />
+                  </div>
+                  <div className="mb-4">
+                    <label className="form-label"><strong>Email:</strong></label>
+                    <input type="email" name="email" className="form-control" placeholder="example@mail.com" value={formData.email} onChange={handleInputChange} required />
+                  </div>
+                  <div className="mb-4">
+                    <label className="form-label"><strong>Password:</strong></label>
+                    <input type="password" name="password" className="form-control" placeholder="Password" value={formData.password} onChange={handleInputChange} required />
+                  </div>
+                </>
+              )}
 
-            {/* User & Admin Login Forms */}
-            {(activeTab === "userLogin" || activeTab === "adminLogin") && (
-              <>
-                <div className="mb-4">
-                  <label className="form-label"><strong>{activeTab === "adminLogin" ? "Admin ID" : "Phone Number"}:</strong></label>
-                  <input type="text" className="form-control" placeholder={activeTab === "adminLogin" ? "Enter Admin ID" : "+1234567890"} />
-                </div>
-                <div className="mb-4">
-                  <label className="form-label"><strong>Password:</strong></label>
-                  <input type="password" className="form-control" placeholder="Password" />
-                </div>
-              </>
-            )}
+              {/* User & Admin Login Forms */}
+              {(activeTab === "userLogin" || activeTab === "adminLogin") && (
+                <>
+                  <div className="mb-4">
+                    <label className="form-label"><strong>{activeTab === "adminLogin" ? "Admin ID" : "Phone Number"}:</strong></label>
+                    <input type="text" name={activeTab === "adminLogin" ? "adminId" : "phone"} className="form-control" placeholder={activeTab === "adminLogin" ? "Enter Admin ID" : "+1234567890"} value={activeTab === "adminLogin" ? formData.adminId : formData.phone} onChange={handleInputChange} required />
+                  </div>
+                  <div className="mb-4">
+                    <label className="form-label"><strong>Password:</strong></label>
+                    <input type="password" name="password" className="form-control" placeholder="Password" value={formData.password} onChange={handleInputChange} required />
+                  </div>
+                </>
+              )}
 
-            {/* Button */}
-            <button className="btn w-100 mb-4" style={{ backgroundColor: '#FF7A00', color: 'white', fontWeight: 'bold', borderRadius: '10px' }}>
-              {activeTab === "signUp" ? "Sign Up" : activeTab === "adminLogin" ? "Admin Login" : "Login"}
-            </button>
+              {/* Submit Button */}
+              <button type="submit" className="btn w-100 mb-4" style={{ backgroundColor: '#FF7A00', color: 'white', fontWeight: 'bold', borderRadius: '10px' }}>
+                {activeTab === "signUp" ? "Sign Up" : activeTab === "adminLogin" ? "Admin Login" : "Login"}
+              </button>
+            </form>
 
             {/* Social Login Options (For Users Only) */}
             {activeTab !== "adminLogin" && (

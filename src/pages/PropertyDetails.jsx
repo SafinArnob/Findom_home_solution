@@ -226,16 +226,33 @@ const DetailsPage = () => {
       </div>
 
       {/* Address Section */}
-      <div className="container box">
-      <div className="mt-4">
-        <h3>Address</h3>
-        <p>Address: 39-11 61st St, Woodside, New York</p>
-        <p>Country: United States</p>
-        <p>City/Town: New York</p>
-        <p>Province/State: New York</p>
-        <p>Neighborhood: South New York</p>
+<div className="container box">
+  <div className="mt-4">
+    <h3>Address</h3>
+    <div className="address-section">
+      <div className="address-item">
+        <span className="address-label">Address</span>
+        <span className="address-value">393 Lewis Ave, Brooklyn, New York</span>
       </div>
+      <div className="address-item">
+        <span className="address-label">Country</span>
+        <span className="address-value">United States</span>
       </div>
+      <div className="address-item">
+        <span className="address-label">Province/State</span>
+        <span className="address-value">New York</span>
+      </div>
+      <div className="address-item">
+        <span className="address-label">City/Town</span>
+        <span className="address-value">New York</span>
+      </div>
+      <div className="address-item">
+        <span className="address-label">Neighborhood</span>
+        <span className="address-value">South New York</span>
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* Details Section */}
       <div className="container box">
