@@ -69,7 +69,7 @@ const Maintenance = () => {
       <Navbar />
       <div className={styles.houseHelperWideImageContainer}>
         <img
-          src="https://th.bing.com/th/id/OIP.q3GqMbyhByyf4e72WnJPcQHaEJ?rs=1&pid=ImgDetMain"
+          src="https://th.bing.com/th/id/R.a23f67959734d7c03f9072a28c432df4?rik=p%2fZQ200JVHG8Yg&riu=http%3a%2f%2fwww.lifeyet.com%2fwp-content%2fuploads%2f2020%2f08%2fHouse-Maintenance.jpg&ehk=cvidKUvsIkAUWCymyLIxgXHDNskNtzcWDkwg92G4Q%2fY%3d&risl=&pid=ImgRaw&r=0"
           alt="Maintenance Services"
           className={styles.houseHelperFullImage}
         />

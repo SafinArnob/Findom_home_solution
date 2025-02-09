@@ -1,0 +1,96 @@
+/* About Us Container */
+.aboutUsContainer {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 60px; /* Add padding to prevent content from overlapping with the footer */
+    background-color: #ffffff; /* Keep background white */
+  }
+  
+  /* Section Titles */
+  .sectionTitle {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #db620c; /* Light Orange Theme */
+  }
+  
+  /* Project Details Section */
+  .projectDetails {
+    margin-bottom: 40px;
+  }
+  
+  .projectDescription {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+  
+  /* Pictures Section */
+  .picturesSection {
+    margin-bottom: 40px;
+  }
+  
+  .imageGrid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(216, 124, 58, 0.2); /* Light Orange Shadow */
+    border: 3px solid #db620c; /* Light Orange Border */
+  }
+  
+  /* Team Members Section */
+  .teamSection {
+    margin-bottom: 40px;
+  }
+  
+  .teamGrid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .teamMember {
+    text-align: center;
+    max-width: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(216, 124, 58, 0.1); /* Light Orange Background */
+    box-shadow: 0 4px 8px rgba(216, 124, 58, 0.2);
+  }
+  
+  .teamMemberImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(216, 124, 58, 0.2);
+    border: 3px solid #d87c3a;
+  }
+  
+  .teamMemberName {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #db620c;
+  }
+  
+  .teamMemberRole {
+    font-size: 1.1rem;
+    color: #db620c;
+    margin-bottom: 10px;
+  }
+  
+  .teamMemberBio {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
