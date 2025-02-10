@@ -19,11 +19,11 @@ function Rent() {
       <section className="container mt-5">
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {[
-            { icon: "bi-person", label: "Bachelor", route: "/apartment" }, // Icon for Bachelor
-            { icon: "bi-people", label: "Family", route: "/house" }, // Icon for Family
-            { icon: "bi-house-door", label: "Sublet", route: "/office" }, // Icon for Sublet
-            { icon: "bi-truck", label: "Transportation", route: "/villa" }, // Icon for Transportation (Truck)
-            { icon: "bi-tools", label: "Services", route: "/luxury-homes" }, // Icon for Services
+            { icon: "bi-person", label: "Bachelor", route: "/bachelor" }, // Icon for Bachelor
+            { icon: "bi-people", label: "Family", route: "/family-house" }, // Icon for Family
+            { icon: "bi-house-door", label: "Sublet", route: "/Sublate" }, // Icon for Sublet
+            { icon: "bi-truck", label: "Transportation", route: "/transportation" }, // Icon for Transportation (Truck)
+            { icon: "bi-tools", label: "Services", route: "/labour" }, // Icon for Services
           ].map((card, index) => (
             <div key={index} className="col">
               <div

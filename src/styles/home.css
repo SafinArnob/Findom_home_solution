@@ -128,16 +128,30 @@
 }
 
 /* Background Image Section */
-.background-image {
+.background-image-home {
   position: relative;
   background-image: url("/src/assets/images/home.jpg");
   background-size: cover;
   background-position: center;
   height: 770px;
 }
+.background-image-family {
+  position: relative;
+  background-image: url("/src/assets/images/family.png");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
 .background-image-bachelor {
   position: relative;
-  background-image: url("/src/assets/images/poster2.png");
+  background-image: url("/src/assets/images/bachelor.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+.background-image-sublate {
+  position: relative;
+  background-image: url("/src/assets/images/sublate.png");
   background-size: cover;
   background-position: center;
   height: 500px;

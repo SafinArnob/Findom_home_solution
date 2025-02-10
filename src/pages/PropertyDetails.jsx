@@ -65,9 +65,6 @@ const DetailsPage = () => {
               <button>
                 <Share2 size={20} />
               </button>
-              <button>
-                <Printer size={20} />
-              </button>
             </div>
             <div className="details-price">{propertyData.price}</div>
           </div>
@@ -179,18 +176,18 @@ const DetailsPage = () => {
           <div className="details-features">
             <h2>Features</h2>
             <ul>
-              <li>✓ Gym</li>
-              <li>✓ Laundry</li>
-              <li>✓ Lawn</li>
-              <li>✓ Microwave</li>
-              <li>✓ Outdoor Shower</li>
-              <li>✓ Refrigerator</li>
-              <li>✓ Sauna</li>
-              <li>✓ Swimming Pool</li>
-              <li>✓ TV Cable</li>
-              <li>✓ Washer</li>
-              <li>✓ Wifi</li>
-              <li>✓ Window Coverings</li>
+              <li> Gym</li>
+              <li> Laundry</li>
+              <li> Lawn</li>
+              <li> Microwave</li>
+              <li> Outdoor Shower</li>
+              <li> Refrigerator</li>
+              <li> Sauna</li>
+              <li> Swimming Pool</li>
+              <li> TV Cable</li>
+              <li> Washer</li>
+              <li> Wifi</li>
+              <li> Window Coverings</li>
             </ul>
           </div>
         </div>

@@ -25,6 +25,7 @@ const Labour = () => {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [showFilters, setShowFilters] = useState(false); // State to toggle filter visibility
   const itemsPerPage = 4;
 
   const handleFilterChange = (e) => {
@@ -72,8 +73,37 @@ const Labour = () => {
         />
       </div>
 
+      {/* Labour Cost Button */}
+      <div className="container mt-4 d-flex justify-content-center">
+        <button
+          className="btn"
+          onClick={() => setShowFilters(!showFilters)}
+          style={{
+            backgroundColor: '#FF4500',
+            color: 'white',
+            border: 'none',
+            padding: '10px 20px',
+            fontSize: '16px',
+            borderRadius: '5px',
+            transition: 'all 0.3s ease',
+          }}
+          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#FF6347'}
+          onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#FF4500'}
+        >
+          Labour Cost
+        </button>
+      </div>
+
       {/* Filter Box */}
-      <div className={`${styles.houseHelperFilterSystem} container mt-4`}>
+      <div
+        className={`${styles.houseHelperFilterSystem} container mt-4 ${showFilters ? styles.showFilters : ''}`}
+        style={{
+          transition: 'all 0.3s ease',
+          maxHeight: showFilters ? '200px' : '0',
+          overflow: 'hidden',
+          padding: showFilters ? '20px' : '0',
+        }}
+      >
         <div className="row g-3">
           {/* Number of Labours */}
           <div className="col-md-3">

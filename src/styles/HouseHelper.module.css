@@ -27,11 +27,14 @@
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
 }
 
-.houseHelperFilterSystem:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.houseHelperFilterSystem.showFilters {
+  max-height: 200px; /* Adjust based on your content height */
+  padding: 20px;
 }
 
 .houseHelperFilterSystem .formLabel {
@@ -86,4 +89,50 @@
 .houseHelperH2 {
   color: #ff7f50;
   margin-bottom: 20px;
+}
+
+/* Labour Cost Button */
+.labourCostButton {
+  background-color: #FF4500;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.labourCostButton:hover {
+  background-color: #FF6347;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  background-color: #F5B6A0;
+  color: white;
+  border: 1px solid #FF4500;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+.page-item.active .page-link {
+  background-color: #FF4500;
+  border-color: #FF4500;
+}
+
+.page-link:hover {
+  background-color: #FF6347;
+  border-color: #FF6347;
 }
