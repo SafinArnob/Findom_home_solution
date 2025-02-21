@@ -29,7 +29,7 @@ function Home() {
       <Navbar />
 
       {/* Background Section with Text and Button */}
-      <section className="background-image position-relative">
+      <section className="background-image-home position-relative">
         <div className="overlay"></div>
         <div className="hero-content">
           <h1>Find a Home<br></br> You will Love</h1>

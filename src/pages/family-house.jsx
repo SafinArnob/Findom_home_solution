@@ -3,7 +3,7 @@ import PropertyCard from '../components/PropertyCard';
 import FilterBar from '../components/FilterBar';
 import '../styles/bachelorPage.css';
 import Navbar from '../components/Navbar';
-
+import Footer from './Footer';
 const Family = () => {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const toggleAdvanced = () => {
@@ -35,12 +35,12 @@ const Family = () => {
       neighborhood: 'Downtown',
       state: 'California',
       city: 'Los Angeles',
-      image: '/src/assets/images/house-1.jpg',
+      image: '/src/assets/images/house-2.jpg',
     },
     {
       id: 2,
       title: 'Family Room',
-      location: '283 Foxhall Ave, Kingston',
+      location:  '/src/assets/images/house-3.jpg',
       price: 550,
       bedrooms: 3,
       bathrooms: 2,
@@ -48,12 +48,12 @@ const Family = () => {
       neighborhood: 'Suburb',
       state: 'Texas',
       city: 'Houston',
-      image: '../assets/images/house-1.jpg',
+      image: '/src/assets/images/house-1.jpg',
     },
     {
       id: 3,
       title: 'Family Room',
-      location: '905 S Commerce St, Alice',
+      location: '/src/assets/images/house-5.jpg',
       price: 550,
       bedrooms: 3,
       bathrooms: 2,
@@ -61,7 +61,7 @@ const Family = () => {
       neighborhood: 'Rural',
       state: 'New York',
       city: 'New York City',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-1.jpg',
     },
     {
       id: 4,
@@ -74,12 +74,12 @@ const Family = () => {
       neighborhood: 'Downtown',
       state: 'California',
       city: 'San Francisco',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-4.jpg',
     },
     {
       id: 5,
       title: 'Family Room',
-      location: '456 Elm St, Austin',
+      location: '/src/assets/images/house-2.jpg',
       price: 850,
       bedrooms: 2,
       bathrooms: 1,
@@ -87,7 +87,7 @@ const Family = () => {
       neighborhood: 'Suburb',
       state: 'Texas',
       city: 'Austin',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 6,
@@ -100,7 +100,7 @@ const Family = () => {
       neighborhood: 'Rural',
       state: 'Illinois',
       city: 'Chicago',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-1.jpg',
     },
     {
       id: 7,
@@ -113,12 +113,12 @@ const Family = () => {
       neighborhood: 'Downtown',
       state: 'Florida',
       city: 'Miami',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-5.jpg',
     },
     {
       id: 8,
       title: 'Family Room',
-      location: '202 Mountain Rd, Denver',
+      location: '/src/assets/images/house-4.jpg',
       price: 750,
       bedrooms: 2,
       bathrooms: 1,
@@ -126,7 +126,7 @@ const Family = () => {
       neighborhood: 'Rural',
       state: 'Colorado',
       city: 'Denver',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 9,
@@ -139,7 +139,7 @@ const Family = () => {
       neighborhood: 'Downtown',
       state: 'Washington',
       city: 'Seattle',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-2.jpg',
     },
     {
       id: 10,
@@ -152,7 +152,7 @@ const Family = () => {
       neighborhood: 'Suburb',
       state: 'California',
       city: 'San Diego',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-1.jpg',
     },
   ];
 
@@ -196,11 +196,12 @@ const Family = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
     <div>
       <Navbar />
 
       {/* Background Section with Text and Button */}
-      <section className="background-image-bachelor position-relative">
+      <section className="background-image-family position-relative">
         <div className="overlay"></div>
         <div className="hero-content">
           {/* Add hero content here if needed */}
@@ -262,7 +263,10 @@ const Family = () => {
         </div>
       </main>
     </div>
+     <Footer />
+  </>
   );
+ 
 };
 
 export default Family;

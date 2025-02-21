@@ -3,6 +3,7 @@ import PropertyCard from '../components/PropertyCard';
 import FilterBar from '../components/FilterBar';
 import '../styles/bachelorPage.css';
 import Navbar from '../components/Navbar';
+import Footer from './Footer';
 
 const RealEstatePage = () => {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
@@ -48,7 +49,7 @@ const RealEstatePage = () => {
       neighborhood: 'Suburb',
       state: 'Texas',
       city: 'Houston',
-      image: '../assets/images/house-1.jpg',
+      image: '/src/assets/images/house-2.jpg',
     },
     {
       id: 3,
@@ -61,7 +62,7 @@ const RealEstatePage = () => {
       neighborhood: 'Rural',
       state: 'New York',
       city: 'New York City',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 4,
@@ -74,7 +75,7 @@ const RealEstatePage = () => {
       neighborhood: 'Downtown',
       state: 'California',
       city: 'San Francisco',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-4.jpg',
     },
     {
       id: 5,
@@ -87,7 +88,7 @@ const RealEstatePage = () => {
       neighborhood: 'Suburb',
       state: 'Texas',
       city: 'Austin',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-5.jpg',
     },
     {
       id: 6,
@@ -100,7 +101,7 @@ const RealEstatePage = () => {
       neighborhood: 'Rural',
       state: 'Illinois',
       city: 'Chicago',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 7,
@@ -113,7 +114,7 @@ const RealEstatePage = () => {
       neighborhood: 'Downtown',
       state: 'Florida',
       city: 'Miami',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-1.jpg',
     },
     {
       id: 8,
@@ -126,12 +127,12 @@ const RealEstatePage = () => {
       neighborhood: 'Rural',
       state: 'Colorado',
       city: 'Denver',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 9,
       title: 'Bachelor',
-      location: '303 Pine St, Seattle',
+      location: '/src/assets/images/house-5.jpg',
       price: 1100,
       bedrooms: 1,
       bathrooms: 1,
@@ -139,7 +140,7 @@ const RealEstatePage = () => {
       neighborhood: 'Downtown',
       state: 'Washington',
       city: 'Seattle',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-5.jpg',
     },
     {
       id: 10,
@@ -152,7 +153,7 @@ const RealEstatePage = () => {
       neighborhood: 'Suburb',
       state: 'California',
       city: 'San Diego',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-5.jpg',
     },
   ];
 
@@ -196,6 +197,7 @@ const RealEstatePage = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
     <div>
       <Navbar />
 
@@ -262,6 +264,9 @@ const RealEstatePage = () => {
         </div>
       </main>
     </div>
+    <Footer />
+    </>
+
   );
 };
 

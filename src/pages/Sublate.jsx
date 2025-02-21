@@ -35,7 +35,7 @@ const Sublate = () => {
       neighborhood: 'Downtown',
       state: 'California',
       city: 'Los Angeles',
-      image: '/src/assets/images/house-1.jpg',
+      image: '/src/assets/images/house-5.jpg',
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ const Sublate = () => {
       neighborhood: 'Suburb',
       state: 'Texas',
       city: 'Houston',
-      image: '../assets/images/house-1.jpg',
+      image: '/src/assets/images/house-4.jpg',
     },
     {
       id: 3,
@@ -61,7 +61,7 @@ const Sublate = () => {
       neighborhood: 'Rural',
       state: 'New York',
       city: 'New York City',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 4,
@@ -74,7 +74,7 @@ const Sublate = () => {
       neighborhood: 'Downtown',
       state: 'California',
       city: 'San Francisco',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-2.jpg',
     },
     {
       id: 5,
@@ -87,7 +87,7 @@ const Sublate = () => {
       neighborhood: 'Suburb',
       state: 'Texas',
       city: 'Austin',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-1.jpg',
     },
     {
       id: 6,
@@ -100,7 +100,7 @@ const Sublate = () => {
       neighborhood: 'Rural',
       state: 'Illinois',
       city: 'Chicago',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-5.jpg',
     },
     {
       id: 7,
@@ -113,7 +113,7 @@ const Sublate = () => {
       neighborhood: 'Downtown',
       state: 'Florida',
       city: 'Miami',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-4.jpg',
     },
     {
       id: 8,
@@ -126,7 +126,7 @@ const Sublate = () => {
       neighborhood: 'Rural',
       state: 'Colorado',
       city: 'Denver',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-3.jpg',
     },
     {
       id: 9,
@@ -139,7 +139,7 @@ const Sublate = () => {
       neighborhood: 'Downtown',
       state: 'Washington',
       city: 'Seattle',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-2.jpg',
     },
     {
       id: 10,
@@ -152,7 +152,7 @@ const Sublate = () => {
       neighborhood: 'Suburb',
       state: 'California',
       city: 'San Diego',
-      image: '/api/placeholder/400/300',
+      image: '/src/assets/images/house-1.jpg',
     },
   ];
 
@@ -200,7 +200,7 @@ const Sublate = () => {
       <Navbar />
 
       {/* Background Section with Text and Button */}
-      <section className="background-image-bachelor position-relative">
+      <section className="background-image-sublate position-relative">
         <div className="overlay"></div>
         <div className="hero-content">
           {/* Add hero content here if needed */}

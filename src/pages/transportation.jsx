@@ -261,13 +261,6 @@ function Transportation() {
           ))}
         </div>
       </div>
-      <div className="static-image-container">
-        <img
-          src="src/assets/images/transportation.png" 
-          alt="Static Image"
-          className="static-image"
-        />
-      </div>
       <Footer />
     </>
   );

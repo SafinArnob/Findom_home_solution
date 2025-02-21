@@ -1,26 +1,29 @@
-
-
 const Footer = () => {
-    const themeColor = '#ff853f'; // Theme color for buttons and highlights
-    const lightBackground = '#f8f9fa'; // Light background for the footer section
+  const themeColor = "#ff853f"; // Theme color for buttons and highlights
+  const lightBackground = "#f8f9fa"; // Light background for the footer section
 
-    return (
-        <section className="container">
-            <footer className="text-white py-5" style={{ backgroundColor: lightBackground }}>
+  return (
+    <section className="container">
+      <footer
+        className="text-white py-5"
+        style={{ backgroundColor: lightBackground }}
+      >
         <div className="container">
           <div className="row">
             {/* Company Info */}
             <div className="col-md-3 text-dark">
-              <h5 style={{ fontWeight: 'bold' }}>FindHome</h5>
+              <h5 style={{ fontWeight: "bold" }}>FindHome</h5>
               <p>58 Love Road #2 Tejgaon</p>
               <p>Email: contact@homeid.com</p>
               <p>Phone: (+68) 1221 09876</p>
-              <a href="http://www.homeid.com" className="text-dark">www.homeid.com</a>
+              <a href="http://www.homeid.com" className="text-dark">
+                www.homeid.com
+              </a>
             </div>
 
             {/* Popular Searches */}
             <div className="col-md-3 text-dark">
-              <h5 style={{ fontWeight: 'bold' }}>Popular Searches</h5>
+              <h5 style={{ fontWeight: "bold" }}>Popular Searches</h5>
               <ul className="list-unstyled">
                 <li>Apartment for Rent</li>
                 <li>Apartment Low to Hide</li>
@@ -30,30 +33,40 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="col-md-3 text-dark">
-              <h5 style={{ fontWeight: 'bold' }}>Quick Links</h5>
+            <div className="col-12 col-sm-6 col-md-3 text-dark mb-3">
+              <h5 className="fw-bold">Quick Links</h5>
               <ul className="list-unstyled">
                 <li>
-                  <button className="btn btn-link p-0 text-dark hover-light">Terms of Use</button>
+                  <button className="btn btn-link p-0 text-dark hover-light w-100 text-start">
+                    Terms of Use
+                  </button>
                 </li>
                 <li>
-                  <button className="btn btn-link p-0 text-dark hover-light">Privacy Policy</button>
+                  <button className="btn btn-link p-0 text-dark hover-light w-100 text-start">
+                    Privacy Policy
+                  </button>
                 </li>
                 <li>
-                  <button className="btn btn-link p-0 text-dark hover-light">Contact Support</button>
+                  <button className="btn btn-link p-0 text-dark hover-light w-100 text-start">
+                    Contact Support
+                  </button>
                 </li>
                 <li>
-                  <button className="btn btn-link p-0 text-dark hover-light">Careers</button>
+                  <button className="btn btn-link p-0 text-dark hover-light w-100 text-start">
+                    Careers
+                  </button>
                 </li>
                 <li>
-                  <button className="btn btn-link p-0 text-dark hover-light">FAQs</button>
+                  <button className="btn btn-link p-0 text-dark hover-light w-100 text-start">
+                    FAQs
+                  </button>
                 </li>
               </ul>
             </div>
 
             {/* Newsletter Signup */}
             <div className="col-md-3 text-dark">
-              <h5 style={{ fontWeight: 'bold' }}>Give Us Suggestions</h5>
+              <h5 style={{ fontWeight: "bold" }}>Give Us Suggestions</h5>
               <p></p>
               <form>
                 <div className="input-group mb-3">
@@ -62,7 +75,11 @@ const Footer = () => {
                     className="form-control"
                     placeholder="Any Suggestions"
                   />
-                  <button className="btn" style={{ backgroundColor: themeColor, color: 'white' }} type="submit">
+                  <button
+                    className="btn"
+                    style={{ backgroundColor: themeColor, color: "white" }}
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>
@@ -77,8 +94,8 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Footer;
