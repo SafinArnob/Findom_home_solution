@@ -4,8 +4,8 @@ import "../styles/Home.css";
 import '../styles/rent_button.css';
 import FilterBar from './../components/FilterBar';
 import Navbar from "../components/Navbar";  // Import the Navbar component
-import Rent from './Rent';
-import AboutUs from './AboutUs';
+import Rent from './Rent_&_services';
+import AboutUs from './why_findome';
 import PropertySlider from "./Property";
 import StatsCounter from "../components/StatsCounter";
 import Footer from "./Footer";
@@ -58,7 +58,7 @@ function Home() {
       {/* Stats Counter */}
       <StatsCounter />
 
-      {/* Footer page */}
+      {/* Why Choose FindHome */}
       <AboutUs />
 
       {/* Footer page */}
