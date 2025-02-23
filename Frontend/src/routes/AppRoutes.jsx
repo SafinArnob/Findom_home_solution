@@ -12,7 +12,8 @@ import Family from '../pages/family-house';
 import Sublate from '../pages/Sublate';
 import Labour from '../pages/Labour';
 import Maintenance from '../pages/Maintenance';
-import AboutUss from '../pages/AboutUss'; // Import the AboutUss component
+import AboutUss from '../pages/AboutUss'; 
+import UserProfile from '../pages/UserProfile'; // Import the UserProfile component
 
 function AppRouters() {
   return (
@@ -31,7 +32,8 @@ function AppRouters() {
         <Route path="/house-helper" element={<HouseHelper />} />
         <Route path="/labour" element={<Labour />} />
         <Route path="/maintenance" element={<Maintenance />} />
-        <Route path="/about-us" element={<AboutUss />} /> {/* Added AboutUss route */}
+        <Route path="/about-us" element={<AboutUss />} />
+        <Route path="/profile" element={<UserProfile />} /> {/* ✅ User Profile Route */}
       </Routes>
     </Router>
   );

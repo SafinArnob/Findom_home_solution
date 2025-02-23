@@ -5,9 +5,20 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check login status from localStorage
+    const user = localStorage.getItem("user");
+    setIsLoggedIn(!!user);
+  }, []);
 
   const handleLoginRegisterClick = () => {
-    navigate('/login');
+    if (isLoggedIn) {
+      navigate('/profile');
+    } else {
+      navigate('/login');
+    }
   };
 
   useEffect(() => {
@@ -197,7 +208,7 @@ const Navbar = () => {
               className="btn btn-link text-dark text-decoration-none"
               onClick={handleLoginRegisterClick}
             >
-              Login/Register
+              {isLoggedIn ? "Profile" : "Login/Register"}
             </button>
           </div>
         </div>
