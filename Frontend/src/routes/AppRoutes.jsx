@@ -14,6 +14,7 @@ import Labour from '../pages/Labour';
 import Maintenance from '../pages/Maintenance';
 import AboutUss from '../pages/AboutUss'; 
 import UserProfile from '../pages/UserProfile'; // Import the UserProfile component
+import UploadDetails from './../pages/UploadDetails';
 
 function AppRouters() {
   return (
@@ -33,7 +34,9 @@ function AppRouters() {
         <Route path="/labour" element={<Labour />} />
         <Route path="/maintenance" element={<Maintenance />} />
         <Route path="/about-us" element={<AboutUss />} />
-        <Route path="/profile" element={<UserProfile />} /> {/* ✅ User Profile Route */}
+        <Route path="/profile" element={<UserProfile />} />{" "}
+        {/* ✅ User Profile Route */}
+        <Route path="/upload-details" element={<UploadDetails />} />
       </Routes>
     </Router>
   );

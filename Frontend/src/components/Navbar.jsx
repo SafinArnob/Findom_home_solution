@@ -198,7 +198,7 @@ const Navbar = () => {
             {/* Add Listing Button */}
             <Link
               className="btn btn-outline-dark d-flex align-items-center"
-              to="/add-listing"
+              to="/upload-details"
             >
               <i className="bi bi-house me-2"></i> Add Listing
             </Link>
