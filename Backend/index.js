@@ -1,23 +1,27 @@
-const express = require('express');
+import express from "express";
+import cors from "cors";
+import { config } from "dotenv";
+import mdb from "./config/db.js"; // Import and execute MongoDB connection
+
+config();
+
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const AuthRouter = require('./Routes/AuthRouter');
-const PropertyRouter = require('./Routes/PropertyRouter'); // Import PropertyRouter
-
-require('dotenv').config();
-require('./config/db');
-
 const PORT = process.env.PORT || 8080;
 
-
-
-app.use(bodyParser.json());
+// Middleware
+app.use(express.json());
 app.use(cors());
 
-app.use('/auth', AuthRouter);
-app.use('/properties', PropertyRouter); // Use the PropertyRouter
+// Serve static files from the 'public' folder
+//app.use("/public", static("public"));
+
+// Routes
+import AuthRouter from "./routes/AuthRouter.js";
+import PropertyRouter from "./routes/PropertyRouter.js";
+
+app.use("/auth", AuthRouter); // Mount AuthRouter at /auth
+app.use("/api/properties", PropertyRouter); // Mount PropertyRouter at /properties
 
 app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });

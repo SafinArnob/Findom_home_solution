@@ -5,6 +5,8 @@ import "../styles/UploadDetails.css";
 import familyImage from "../assets/images/family.png"; // Import the image
 import Navbar from "../components/Navbar"; // Import Navbar
 import Footer from "./Footer"; // Import Footer
+import axios from "axios"; // For making API requests
+import { useNavigate } from "react-router-dom"; // For redirection
 
 const UploadDetails = () => {
   const [formData, setFormData] = useState({
@@ -12,10 +14,8 @@ const UploadDetails = () => {
     address: "",
     Location: "",
     city: "",
-    country: "Bangladesh",
     zipCode: "",
-    propertyType: "House",
-    listingType: "For Rent",
+    propertyType: "",
     price: "",
     rooms: "",
     bedrooms: "",
@@ -29,9 +29,12 @@ const UploadDetails = () => {
       wifi: false,
       windowCoverings: false,
     },
-    images: [],
+    images: null,
   });
 
+  const navigate = useNavigate();
+
+  // Handle change for form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -40,6 +43,7 @@ const UploadDetails = () => {
     });
   };
 
+  // Handle change for checkboxes
   const handleFeatureChange = (e) => {
     const { name, checked } = e.target;
     setFormData({
@@ -51,27 +55,80 @@ const UploadDetails = () => {
     });
   };
 
+  // Handle image file input
   const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files);
+    const files = e.target.files[0];
+    console.log(files);
     setFormData({
       ...formData,
-      images: [...formData.images, ...files],
+      images: files, // Store the selected files
     });
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data submitted:", formData);
-    alert("Property listing submitted successfully!");
+
+    console.log("xx");
+
+    const token = localStorage.getItem("token"); // Get the JWT token
+    if (!token) {
+      alert("You must be logged in to upload a property.");
+      navigate("/login"); // Redirect to login page
+      return;
+    }
+
+    try {
+      const data = new FormData();
+      data.append("title", formData.title);
+      data.append("address", formData.address);
+      data.append("Location", formData.Location);
+      data.append("city", formData.city);
+      data.append("zipCode", formData.zipCode);
+      data.append("propertyType", formData.propertyType);
+      data.append("price", formData.price);
+      data.append("rooms", formData.rooms);
+      data.append("bedrooms", formData.bedrooms);
+      data.append("bathrooms", formData.bathrooms);
+      data.append("size", formData.size);
+      data.append("yearBuilt", formData.yearBuilt);
+      data.append("description", formData.description);
+      data.append("features", JSON.stringify(formData.features)); // Stringify features
+      data.append("images", formData.images);
+
+      // // Append images
+      // formData.images.forEach((image) => {
+      //   data.append("images", image);
+      // });
+
+      // Send data to backend API
+      const response = await axios.post(`http://localhost:8080/api/properties/upload`, data, 
+        {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`, // Include the JWT in headers
+        },
+      });
+
+      console.log("Property uploaded successfully:", response.data);
+    //  toast.success();
+      alert("Property listing submitted successfully!");
+      navigate("/profile"); // Redirect to profile or another page
+    } catch (error) {
+      console.error("Error uploading property:", error);
+      alert("Failed to upload property. Please try again.");
+    }
   };
 
+  // Render image previews
   const renderImagePreviews = () => {
-    return formData.images.map((image, index) => (
-      <Card key={index} className="mb-2 image-preview">
+    let image = formData.images;
+    return (
+      <Card key={0} className="mb-2 image-preview">
         <Card.Img
           variant="top"
           src={URL.createObjectURL(image)}
-          alt={`Property image ${index + 1}`}
+          alt={`Property image`}
           className="preview-image"
         />
         <Card.Body className="p-2">
@@ -80,7 +137,7 @@ const UploadDetails = () => {
             size="sm"
             onClick={() => {
               const newImages = [...formData.images];
-              newImages.splice(index, 1);
+              newImages.splice(1, 1);
               setFormData({ ...formData, images: newImages });
             }}
           >
@@ -88,15 +145,12 @@ const UploadDetails = () => {
           </Button>
         </Card.Body>
       </Card>
-    ));
+    );
   };
 
   return (
     <>
-      {/* Add Navbar */}
       <Navbar />
-
-      {/* Main Content */}
       <Container className="upload-details-container">
         <Row className="justify-content-center">
           <Col md={10}>
@@ -105,10 +159,9 @@ const UploadDetails = () => {
                 <h2>Add New Property Listing</h2>
               </Card.Header>
               <Card.Body>
-                {/* Static Image Section */}
                 <div
                   style={{
-                    backgroundImage: `url(${familyImage})`, // Use the imported image
+                    backgroundImage: `url(${familyImage})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     height: "200px",
@@ -264,7 +317,7 @@ const UploadDetails = () => {
                           name="Location"
                           value={formData.Location}
                           onChange={handleChange}
-                          placeholder="e.g. Rampura"
+                          placeholder="e.g. Dhaka"
                           required
                         />
                       </Form.Group>
@@ -286,142 +339,108 @@ const UploadDetails = () => {
 
                     <Col md={6} className="mb-3">
                       <Form.Group>
-                        <Form.Label>Country*</Form.Label>
+                        <Form.Label>Zip Code*</Form.Label>
                         <Form.Control
                           type="text"
-                          name="country"
-                          value={formData.country}
+                          name="zipCode"
+                          value={formData.zipCode}
                           onChange={handleChange}
-                          placeholder="e.g. Bangladesh"
+                          placeholder="e.g. 1216"
                           required
                         />
                       </Form.Group>
                     </Col>
                   </Row>
 
-                  {/* Property Features */}
-                  <h4 className="section-title">Property Features</h4>
+                  {/* Description */}
+                  <h4 className="section-title">Description</h4>
                   <Row>
-                    <Col md={6} className="mb-2">
+                    <Col md={12} className="mb-3">
+                      <Form.Group>
+                        <Form.Label>Property Description*</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          name="description"
+                          value={formData.description}
+                          onChange={handleChange}
+                          placeholder="Describe the property"
+                          required
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
+                  {/* Features */}
+                  <h4 className="section-title">Features</h4>
+                  <Row>
+                    <Col md={6} className="mb-3">
                       <Form.Check
                         type="checkbox"
-                        id="garage"
-                        label="Garage"
                         name="garage"
+                        label="Garage"
                         checked={formData.features.garage}
                         onChange={handleFeatureChange}
                       />
                     </Col>
-                    <Col md={6} className="mb-2">
+                    <Col md={6} className="mb-3">
                       <Form.Check
                         type="checkbox"
-                        id="tvCable"
-                        label="TV Cable"
                         name="tvCable"
+                        label="TV Cable"
                         checked={formData.features.tvCable}
                         onChange={handleFeatureChange}
                       />
                     </Col>
-                    <Col md={6} className="mb-2">
+                    <Col md={6} className="mb-3">
                       <Form.Check
                         type="checkbox"
-                        id="wifi"
-                        label="WiFi"
                         name="wifi"
+                        label="Wi-Fi"
                         checked={formData.features.wifi}
                         onChange={handleFeatureChange}
                       />
                     </Col>
-                    <Col md={6} className="mb-2">
+                    <Col md={6} className="mb-3">
                       <Form.Check
                         type="checkbox"
-                        id="windowCoverings"
-                        label="Window Coverings"
                         name="windowCoverings"
+                        label="Window Coverings"
                         checked={formData.features.windowCoverings}
                         onChange={handleFeatureChange}
                       />
                     </Col>
                   </Row>
 
-                  {/* Property Description */}
-                  <h4 className="section-title">Property Description</h4>
+                  {/* Images Upload */}
+                  <h4 className="section-title">Images</h4>
                   <Row>
                     <Col md={12} className="mb-3">
                       <Form.Group>
-                        <Form.Label>Description*</Form.Label>
+                        <Form.Label>Upload Images*</Form.Label>
                         <Form.Control
-                          as="textarea"
-                          name="description"
-                          value={formData.description}
-                          onChange={handleChange}
-                          rows={5}
-                          placeholder="Describe your property..."
+                          type="file"
+                          multiple
+                          onChange={handleImageUpload}
                           required
+                          accept="image/*" //restrict only images
                         />
                       </Form.Group>
                     </Col>
                   </Row>
 
-                  {/* Property Images */}
-                  <h4 className="section-title">Property Images</h4>
-                  <Row>
-                    <Col md={12} className="mb-3">
-                      <Form.Group>
-                        <Form.Label>Upload Images*</Form.Label>
-                        <div className="input-group">
-                          <Form.Control
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            onChange={handleImageUpload}
-                            required={formData.images.length === 0}
-                          />
-                          <Button variant="outline-secondary">
-                            <FaUpload /> Upload
-                          </Button>
-                        </div>
-                        <Form.Text className="text-muted">
-                          Upload at least one image. You can upload multiple
-                          images at once.
-                        </Form.Text>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-
                   {/* Image Previews */}
-                  <Row className="mt-3">
-                    <Col>
-                      <h5>Image Previews:</h5>
-                      {formData.images.length > 0 ? (
-                        <div className="d-flex flex-wrap">
-                          {renderImagePreviews()}
-                        </div>
-                      ) : (
-                        <p className="text-muted">No images uploaded yet.</p>
-                      )}
-                    </Col>
-                  </Row>
+                  {formData.images && renderImagePreviews()}
 
-                  {/* Submit Button */}
-                  <Row className="mt-4">
-                    <Col className="d-flex justify-content-between">
-                      <Button variant="secondary" type="button">
-                        Cancel
-                      </Button>
-                      <Button variant="primary" type="submit">
-                        Submit Listing
-                      </Button>
-                    </Col>
-                  </Row>
+                  <Button type="submit" variant="primary" className="mt-3">
+                    Submit Listing
+                  </Button>
                 </Form>
               </Card.Body>
             </Card>
           </Col>
         </Row>
       </Container>
-
-      {/* Add Footer */}
       <Footer />
     </>
   );
