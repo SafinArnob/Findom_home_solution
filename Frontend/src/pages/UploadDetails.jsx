@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import { FaUpload } from "react-icons/fa";
+import { FaUpload, FaTrash } from "react-icons/fa";
 import "../styles/UploadDetails.css";
 import familyImage from "../assets/images/family.png"; // Import the image
 import Navbar from "../components/Navbar"; // Import Navbar
@@ -12,7 +12,7 @@ const UploadDetails = () => {
   const [formData, setFormData] = useState({
     title: "",
     address: "",
-    Location: "",
+    location: "",
     city: "",
     zipCode: "",
     propertyType: "",
@@ -29,8 +29,12 @@ const UploadDetails = () => {
       wifi: false,
       windowCoverings: false,
     },
-    images: null,
+    images: [], // Changed to array for multiple images
   });
+
+  const [previewImages, setPreviewImages] = useState([]); // Array of preview images
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -55,21 +59,58 @@ const UploadDetails = () => {
     });
   };
 
-  // Handle image file input
-  const handleImageUpload = (e) => {
-    const files = e.target.files[0];
-    console.log(files);
+  // Handle multiple image files input
+  const handleImagesUpload = (e) => {
+    const files = Array.from(e.target.files);
+
+    if (files.length > 0) {
+      // Update formData with new files
+      setFormData({
+        ...formData,
+        images: [...formData.images, ...files], // Append new files to existing ones
+      });
+
+      // Create previews for new files
+      const newPreviews = files.map((file) => ({
+        url: URL.createObjectURL(file),
+        file: file,
+      }));
+
+      setPreviewImages([...previewImages, ...newPreviews]);
+    }
+  };
+
+  // Remove a specific image
+  const handleRemoveImage = (index) => {
+    // Create new arrays without the removed image
+    const updatedImages = [...formData.images];
+    updatedImages.splice(index, 1);
+
+    const updatedPreviews = [...previewImages];
+
+    // Revoke the object URL to avoid memory leaks
+    URL.revokeObjectURL(updatedPreviews[index].url);
+    updatedPreviews.splice(index, 1);
+
     setFormData({
       ...formData,
-      images: files, // Store the selected files
+      images: updatedImages,
     });
+    setPreviewImages(updatedPreviews);
   };
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
 
-    console.log("xx");
+    // Validate at least one image is uploaded
+    if (formData.images.length === 0) {
+      setError("Please upload at least one image");
+      setIsSubmitting(false);
+      return;
+    }
 
     const token = localStorage.getItem("token"); // Get the JWT token
     if (!token) {
@@ -82,7 +123,7 @@ const UploadDetails = () => {
       const data = new FormData();
       data.append("title", formData.title);
       data.append("address", formData.address);
-      data.append("Location", formData.Location);
+      data.append("location", formData.location);
       data.append("city", formData.city);
       data.append("zipCode", formData.zipCode);
       data.append("propertyType", formData.propertyType);
@@ -94,57 +135,68 @@ const UploadDetails = () => {
       data.append("yearBuilt", formData.yearBuilt);
       data.append("description", formData.description);
       data.append("features", JSON.stringify(formData.features)); // Stringify features
-      data.append("images", formData.images);
 
-      // // Append images
-      // formData.images.forEach((image) => {
-      //   data.append("images", image);
-      // });
-
-      // Send data to backend API
-      const response = await axios.post(`http://localhost:8080/api/properties/upload`, data, 
-        {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`, // Include the JWT in headers
-        },
+      // Append multiple images with the same field name
+      formData.images.forEach((image) => {
+        data.append("images", image); // Note: field name changed to "images" (plural)
       });
 
+      // Send data to backend API
+      const response = await axios.post(
+        `http://localhost:8080/api/properties/upload`,
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`, // Include the JWT in headers
+          },
+        }
+      );
+
       console.log("Property uploaded successfully:", response.data);
-    //  toast.success();
       alert("Property listing submitted successfully!");
       navigate("/profile"); // Redirect to profile or another page
     } catch (error) {
       console.error("Error uploading property:", error);
-      alert("Failed to upload property. Please try again.");
+      setError(
+        error.response?.data?.message ||
+          "Failed to upload property. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  // Render image previews
+  // Render multiple image previews
   const renderImagePreviews = () => {
-    let image = formData.images;
+    if (previewImages.length === 0) return null;
+
     return (
-      <Card key={0} className="mb-2 image-preview">
-        <Card.Img
-          variant="top"
-          src={URL.createObjectURL(image)}
-          alt={`Property image`}
-          className="preview-image"
-        />
-        <Card.Body className="p-2">
-          <Button
-            variant="danger"
-            size="sm"
-            onClick={() => {
-              const newImages = [...formData.images];
-              newImages.splice(1, 1);
-              setFormData({ ...formData, images: newImages });
-            }}
-          >
-            Remove
-          </Button>
-        </Card.Body>
-      </Card>
+      <Row className="mb-3">
+        {previewImages.map((preview, index) => (
+          <Col md={4} key={index} className="mb-2">
+            <Card className="image-preview">
+              <Card.Img
+                variant="top"
+                src={preview.url}
+                alt={`Property image preview ${index + 1}`}
+                className="preview-image"
+                style={{ height: "150px", objectFit: "cover" }}
+              />
+              <Card.Body className="p-2 d-flex justify-content-between align-items-center">
+                <small className="text-muted">Image {index + 1}</small>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleRemoveImage(index)}
+                >
+                  <FaTrash /> Remove
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
     );
   };
 
@@ -170,6 +222,12 @@ const UploadDetails = () => {
                   }}
                 ></div>
 
+                {error && (
+                  <div className="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                )}
+
                 <Form onSubmit={handleSubmit}>
                   {/* Basic Information */}
                   <h4 className="section-title">Basic Information</h4>
@@ -182,7 +240,7 @@ const UploadDetails = () => {
                           name="title"
                           value={formData.title}
                           onChange={handleChange}
-                          placeholder="e.g. Rampura, Dhaka"
+                          placeholder="e.g. Modern Family Home"
                           required
                         />
                       </Form.Group>
@@ -215,9 +273,11 @@ const UploadDetails = () => {
                           onChange={handleChange}
                           required
                         >
-                          <option value="House">House</option>
-                          <option value="Apartment">Apartment</option>
-                          <option value="Villa">Villa</option>
+                          <option value="">Select Property Type</option>
+                          <option value="family">Family</option>
+                          <option value="bachelor">Bachelors</option>
+                          <option value="sublet">Sublet</option>
+                          <option value="hostel">Hostel</option>
                         </Form.Select>
                       </Form.Group>
                     </Col>
@@ -314,10 +374,10 @@ const UploadDetails = () => {
                         <Form.Label>Location*</Form.Label>
                         <Form.Control
                           type="text"
-                          name="Location"
-                          value={formData.Location}
+                          name="location"
+                          value={formData.location}
                           onChange={handleChange}
-                          placeholder="e.g. Dhaka"
+                          placeholder="e.g. Neighborhood/District"
                           required
                         />
                       </Form.Group>
@@ -331,7 +391,7 @@ const UploadDetails = () => {
                           name="city"
                           value={formData.city}
                           onChange={handleChange}
-                          placeholder="e.g. Dhaka"
+                          placeholder="e.g. New York"
                           required
                         />
                       </Form.Group>
@@ -345,7 +405,7 @@ const UploadDetails = () => {
                           name="zipCode"
                           value={formData.zipCode}
                           onChange={handleChange}
-                          placeholder="e.g. 1216"
+                          placeholder="e.g. 10001"
                           required
                         />
                       </Form.Group>
@@ -417,23 +477,42 @@ const UploadDetails = () => {
                   <Row>
                     <Col md={12} className="mb-3">
                       <Form.Group>
-                        <Form.Label>Upload Images*</Form.Label>
+                        <Form.Label>
+                          Upload Images* (Up to 10 images)
+                        </Form.Label>
                         <Form.Control
                           type="file"
-                          multiple
-                          onChange={handleImageUpload}
-                          required
-                          accept="image/*" //restrict only images
+                          name="images"
+                          onChange={handleImagesUpload}
+                          accept="image/*"
+                          multiple // Enable multiple file selection
                         />
+                        <small className="text-muted">
+                          Acceptable formats: .jpg, .jpeg, .png, .webp (Max
+                          size: 5MB per image)
+                        </small>
                       </Form.Group>
                     </Col>
                   </Row>
 
                   {/* Image Previews */}
-                  {formData.images && renderImagePreviews()}
+                  {renderImagePreviews()}
 
-                  <Button type="submit" variant="primary" className="mt-3">
-                    Submit Listing
+                  <div className="mb-3">
+                    <small className="text-primary">
+                      <strong>
+                        Number of images: {previewImages.length}/10
+                      </strong>
+                    </small>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    className="mt-3"
+                    disabled={isSubmitting || previewImages.length === 0}
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit Listing"}
                   </Button>
                 </Form>
               </Card.Body>
