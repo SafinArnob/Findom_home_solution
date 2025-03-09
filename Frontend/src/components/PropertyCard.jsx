@@ -1,26 +1,40 @@
-import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const PropertyCard = ({ property }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="card shadow-sm border-0 rounded overflow-hidden" style={{ width: '100%', maxWidth: '350px' }}>
+    <div
+      className="card shadow-sm border-0 rounded overflow-hidden"
+      style={{ width: "100%", maxWidth: "350px" }}
+    >
       {/* Property Image with Overlay */}
-      <div className="position-relative" style={{ height: '200px', overflow: 'hidden' }}>
+      <div
+        className="position-relative"
+        style={{ height: "200px", overflow: "hidden" }}
+      >
         <img
           src={property.image}
           alt={property.title}
           className="card-img-top img-fluid"
-          style={{ objectFit: 'cover', height: '100%', transition: 'opacity 0.3s' }}
-          onMouseEnter={(e) => (e.target.style.opacity = '0.9')}
-          onMouseLeave={(e) => (e.target.style.opacity = '1')}
+          style={{
+            objectFit: "cover",
+            height: "100%",
+            transition: "opacity 0.3s",
+          }}
+          onMouseEnter={(e) => (e.target.style.opacity = "0.9")}
+          onMouseLeave={(e) => (e.target.style.opacity = "1")}
         />
 
         {/* Badges */}
         <div className="position-absolute top-0 start-0 m-2">
-          {property.isFeatured && <span className="badge bg-warning text-dark me-1">FEATURED</span>}
-          {property.status && <span className="badge bg-primary">{property.status}</span>}
+          {property.isFeatured && (
+            <span className="badge bg-warning text-dark me-1">FEATURED</span>
+          )}
+          {property.status && (
+            <span className="badge bg-primary">{property.status}</span>
+          )}
         </div>
       </div>
 
@@ -32,17 +46,29 @@ const PropertyCard = ({ property }) => {
 
         {/* Property Info */}
         <div className="d-flex justify-content-between text-secondary mb-3">
-          <div><i className="bi bi-house-door-fill me-1"></i>{property.bedrooms} Br</div>
-          <div><i className="bi bi-bathtub-fill me-1"></i>{property.bathrooms} Ba</div>
-          <div><i className="bi bi-arrows-fullscreen me-1"></i>{property.area} SqFt</div>
+          <div>
+            <i className="bi bi-house-door-fill me-1"></i>
+            {property.bedrooms} Br
+          </div>
+          <div>
+            <i className="bi bi-bathtub-fill me-1"></i>
+            {property.bathrooms} Ba
+          </div>
+          <div>
+            <i className="bi bi-arrows-fullscreen me-1"></i>
+            {property.area} SqFt
+          </div>
         </div>
 
         {/* View Details Button */}
         <div className="mt-3">
           <button
             className="btn btn-warning w-100"
-            style={{ transition: 'background-color 0.3s' }}
-            onClick={() => navigate(`/property/${property.id}`)} // Navigate to PropertyDetails page
+            style={{ transition: "background-color 0.3s" }}
+            onClick={() => {
+              console.log(property._id);
+              navigate(`/property/${property._id}`);
+            }} // Navigate to PropertyDetails page
           >
             View Details
           </button>

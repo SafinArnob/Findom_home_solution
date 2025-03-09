@@ -1,0 +1,135 @@
+/* Sidebar Styling */
+.sidenav {
+  background-color: #23313f;
+  color: #fff;
+  width: 260px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Closed State for Sidebar */
+.sidenav:not(.open) {
+  transform: translateX(-100%);
+}
+
+.sidenav.open {
+  transform: translateX(0);
+}
+
+/* Sidebar Header */
+.sidenav-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidenav-title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sidenav-toggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* Sidebar Menu */
+.sidenav-menu {
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidenav-item {
+  margin: 6px 10px;
+}
+
+.sidenav-link {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+  border-left: 4px solid transparent;
+}
+
+.sidenav-link i {
+  margin-right: 12px;
+  font-size: 1.25rem;
+  min-width: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.sidenav-item.active .sidenav-link {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left-color: #007bff;
+}
+
+.sidenav-link:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Logout Button Styling */
+.logout-item {
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+/* Sidebar Responsiveness */
+@media (max-width: 992px) {
+  .sidenav {
+    width: 220px;
+    transform: translateX(-100%);
+  }
+
+  .sidenav.open {
+    transform: translateX(0);
+  }
+
+  .sidenav-toggle {
+    display: block;
+  }
+
+  .d-lg-none {
+    display: block !important;
+  }
+}
+
+/* Adjusting Main Content for Sidebar */
+.main-content {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.main-content.with-sidebar {
+  margin-left: 260px;
+}
+
+@media (max-width: 992px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
